@@ -19,18 +19,18 @@
 	 <header class="masthead_internal">		
 	</header>    
     
-    	<!-- Contact -->
+    	<!-- login -->
 	<section class="page-section" id="contact">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Login</h2>
-					<h3 class="section-subheading text-muted">Start using out services.</h3>
+					<h3 class="section-subheading text-muted">Start using our services.</h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-				       <form action="${pageContext.request.contextPath}/login" id="loginForm" method="post"name="login" novalidate="novalidate">
+				       <form action="${pageContext.request.contextPath}/login" id="loginForm" method="post" name="login" novalidate="novalidate">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
