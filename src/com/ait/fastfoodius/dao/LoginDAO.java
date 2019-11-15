@@ -1,6 +1,7 @@
 package com.ait.fastfoodius.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -13,15 +14,16 @@ public class LoginDAO {
 	// Connection DB
 		private Connection con = null;
 		private Statement stmt = null;
+		private PreparedStatement stmtp = null;
 
-		public LoginBean serach(String username) {
+		public LoginBean validate(String username) {
 		
 			LoginBean login = new LoginBean();;
 			ResultSet rs = null;
-			String cmd = "select 1 from users where username = "+username+";";
+			String cmd = "select username, password from login where username = '"+username+"';";
 			try {
 				con = new DatabaseConnection().connect();
-				stmt = con.prepareStatement(cmd);
+				stmt = con.createStatement();
 				stmt.executeQuery(cmd);
 				rs = stmt.executeQuery(cmd);
 				while (rs.next()) {
@@ -34,6 +36,20 @@ public class LoginDAO {
 			}
 			return login;
 		};
+		
+		public void addLogin(String username, String password, String accessType) {
 
-
+			String cmd = "insert into login values (?,?,?);";
+			try {
+				con = new DatabaseConnection().connect();
+				stmtp = con.prepareStatement(cmd);
+				stmtp.setString(1, username);
+				stmtp.setString(2, password);
+				stmtp.setString(3, accessType);
+				System.out.println(stmtp.toString());
+				stmtp.executeUpdate();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		};
 }

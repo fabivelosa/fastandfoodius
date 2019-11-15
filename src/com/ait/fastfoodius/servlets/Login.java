@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
 		String n = request.getParameter("username");
 		String p = request.getParameter("userpass");
 		LoginDAO loginDao = new LoginDAO();
-		LoginBean bean = loginDao.serach(n);
+		LoginBean bean = loginDao.validate(n);
 
 		if (validate(n, p,bean)) {
 			request.getSession(false).setAttribute("logged", Boolean.TRUE);

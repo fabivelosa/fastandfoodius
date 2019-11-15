@@ -1,5 +1,5 @@
 package com.ait.fastfoodius.dao;
 
-public class ProductDAO {
+public class DeliveryDAO {
 
 }

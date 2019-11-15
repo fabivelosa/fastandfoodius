@@ -1,5 +1,5 @@
 package com.ait.fastfoodius.bean;
 
-public class Order {
+public class MenuBean {
 
 }

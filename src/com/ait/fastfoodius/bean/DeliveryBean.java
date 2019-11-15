@@ -1,5 +1,5 @@
 package com.ait.fastfoodius.bean;
 
-public class Customer {
+public class DeliveryBean {
 
 }
