@@ -98,7 +98,7 @@ CREATE TABLE delivery (
       whenDelivered   DATETIME,
       PRIMARY KEY (delivery_id),
       FOREIGN KEY (order_ID) REFERENCES orders (order_ID),
-      FOREIGN KEY (deliveredBy) REFERENCES employee (username)
+      FOREIGN KEY (deliveredBy) REFERENCES login (username)
 );
 
 
