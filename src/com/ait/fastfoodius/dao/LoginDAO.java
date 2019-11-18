@@ -18,9 +18,9 @@ public class LoginDAO {
 
 		public LoginBean validate(String username) {
 		
-			LoginBean login = new LoginBean();;
+			LoginBean login = new LoginBean();
 			ResultSet rs = null;
-			String cmd = "select username, password from login where username = '"+username+"';";
+			String cmd = "select username, password, accesstype from login where username = '"+username+"';";
 			try {
 				con = new DatabaseConnection().connect();
 				stmt = con.createStatement();
@@ -29,6 +29,7 @@ public class LoginDAO {
 				while (rs.next()) {
 					login.setUsername(rs.getString(1));
 					login.setPassword(rs.getString(2));	
+					login.setRole(rs.getInt(3));	
 				}
 
 			} catch (Exception e1) {

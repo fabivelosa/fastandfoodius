@@ -3,6 +3,7 @@ package com.ait.fastfoodius.bean;
 public class LoginBean {
 	private String username;
 	private String password;
+	private int role;
 	/**
 	 * @return the username
 	 */
@@ -26,6 +27,18 @@ public class LoginBean {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	/**
+	 * @return the role
+	 */
+	public int getRole() {
+		return role;
+	}
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 	
