@@ -32,19 +32,21 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-		 String contextPath = request.getContextPath();
+		String contextPath = request.getContextPath();
 		System.out.println(contextPath);
 		String n = request.getParameter("username");
 		String p = request.getParameter("userpass");
 		LoginDAO loginDao = new LoginDAO();
-		LoginBean bean = loginDao.validate(n);
+		LoginBean bean = loginDao.searchUserPwd(n);
 
 		if (validate(n, p,bean)) {
 			request.getSession(false).setAttribute("logged", Boolean.TRUE);
-			request.getSession(false).setAttribute("user", n);			
-			response.sendRedirect(contextPath+"/pages/main.jsp");	
+			request.getSession(false).setAttribute("user", n);
+			request.getSession(false).setAttribute("role", bean.getRole());
+			response.sendRedirect(contextPath+"/pages/main.jsp");			
 		} else {
 			request.getSession(false).setAttribute("logged", Boolean.FALSE);		
+			
 			response.sendRedirect(contextPath+"/pages/accessdenied.jsp");
 		}
 	
@@ -61,7 +63,7 @@ public class Login extends HttpServlet {
 		doGet(request, response);
 	}
 
-	public boolean validate(String user, String pass,LoginBean login) {
+	public boolean validate(String user, String pass, LoginBean login) {
 	
 	    if (user.equals(login.getUsername()) && pass.equals(login.getPassword())) {
 	    	return true;

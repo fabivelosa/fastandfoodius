@@ -1,13 +1,11 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <title>Fast and Foodius</title>
-
 <%@include file="../includes/header.jsp" %>
-
-
 </head>
 
 <body id="page-top">
@@ -25,9 +23,31 @@
 
 				<% if (session.getAttribute("logged") == Boolean.TRUE) { %>
 				<div class="intro-heading text-uppercase">It's Nice To see You, <%= session.getAttribute("user") %></div>
-				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-					href="#services">Start an order</a>
-
+				
+					<%  int roleId = ((Integer) session.getAttribute("role")).intValue();
+					pageContext.setAttribute("roleId",roleId);%>
+							<!--  if to show buttons related the role -->		
+                           <c:if test="${roleId == 1}">
+                                             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">SysAdmin Buttons</a>
+                           </c:if>  
+                            <c:if test="${roleId == 2}">
+                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Start an order</a>
+                           </c:if>  
+                           <c:if test="${roleId == 3}">
+                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Staff Buttons</a>
+                           </c:if>   
+                           <c:if test="${roleId == 4}">
+                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Delivery Buttons</a>
+                           </c:if> 
+                           <c:if test="${roleId == 5}">
+                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Manager Buttons</a>
+                           </c:if> 
+					<!--  if to show buttons related the role -->	
 				<% } else {%>
 				<div class="intro-heading text-uppercase">please login to make
 					an order</div>

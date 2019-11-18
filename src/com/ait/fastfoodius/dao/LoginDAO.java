@@ -16,7 +16,7 @@ public class LoginDAO {
 		private Statement stmt = null;
 		private PreparedStatement stmtp = null;
 
-		public LoginBean validate(String username) {
+		public LoginBean searchUserPwd(String username) {
 		
 			LoginBean login = new LoginBean();
 			ResultSet rs = null;

@@ -3,20 +3,33 @@ INSERT INTO accessType VALUES (1,"sys-admin");
 INSERT INTO accessType VALUES (2,"customer");
 INSERT INTO accessType VALUES (3,"staff");
 INSERT INTO accessType VALUES (4,"delivery");
-INSERT INTO accessTypeFTT67890 VALUES (5,"manager");
+INSERT INTO accessType VALUES (5,"manager");
+
+/* Data for the table person */
+INSERT INTO person VALUES (001,'Fabiane', 'Velosa','1983-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','admin','030-0074321');
+INSERT INTO person VALUES (002,'Joyce', 'Martins','1993-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','customer','030-0074321');
+INSERT INTO person VALUES (003,'Oladejo', 'Famuyide','1993-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','staff','030-0074321');
+INSERT INTO person VALUES (004,'Obina', 'Nnadi','1993-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','delivery','030-0074321');
+INSERT INTO person VALUES (005,'Martina', 'Curran','1993-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','manager','030-0074321');
+
 
 /* Data for the table user */
-INSERT INTO users VALUES ("fabi@email.com","fabi123",1);
-INSERT INTO users VALUES ("ruors@nmail.com","A001_long",2);
-INSERT INTO users VALUES ("romde@mail.com", "Merom_001",2 );
-INSERT INTO users VALUES ("jlai@ymail.com", "jajaBr_29@",2);
-INSERT INTO users VALUES ("anade@kmail.com", "Dean@on76",2);
-INSERT INTO users VALUES ("dr.ana@gmail.com","Ana1870ji",3);
-INSERT INTO users VALUES ("aa@ymail.com", "Cruz_430",3);
-INSERT INTO users VALUES ("christy@hmail.com", "bcBc123ki",3);
-INSERT INTO users VALUES ("bm@tmail.com", "Bm00@123",4 );
-INSERT INTO users VALUES ("chan@ymail.com", "Cfran45_123",4);
-INSERT INTO users VALUES ("sot@ymail.com", "ottisveb@s",3);
+INSERT INTO login VALUES ("admin","123",1);
+INSERT INTO login VALUES ("customer","123",2);
+INSERT INTO login VALUES ("staff","123",3);
+INSERT INTO login VALUES ("delivery","123",4);
+INSERT INTO login VALUES ("manager","123",5);
+INSERT INTO login VALUES ("fabi@email.com","123",1);
+INSERT INTO login VALUES ("ruors@nmail.com","A001_long",2);
+INSERT INTO login VALUES ("romde@mail.com", "Merom_001",2 );
+INSERT INTO login VALUES ("jlai@ymail.com", "jajaBr_29@",2);
+INSERT INTO login VALUES ("anade@kmail.com", "Dean@on76",2);
+INSERT INTO login VALUES ("dr.ana@gmail.com","Ana1870ji",3);
+INSERT INTO login VALUES ("aa@ymail.com", "Cruz_430",3);
+INSERT INTO login VALUES ("christy@hmail.com", "bcBc123ki",3);
+INSERT INTO login VALUES ("bm@tmail.com", "Bm00@123",4 );
+INSERT INTO login VALUES ("chan@ymail.com", "Cfran45_123",4);
+INSERT INTO login VALUES ("sot@ymail.com", "ottisveb@s",3);
 
   
 /* Data for the table customer */
