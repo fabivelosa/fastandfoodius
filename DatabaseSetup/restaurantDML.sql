@@ -13,7 +13,7 @@ INSERT INTO person VALUES (004,'Obina', 'Nnadi','1993-06-17','manager','Obere St
 INSERT INTO person VALUES (005,'Martina', 'Curran','1993-06-17','manager','Obere Str. 57','Galway', 'F','N37T56R','manager','030-0074321');
 
 
-/* Data for the table user */
+/* Data for the table login */
 INSERT INTO login VALUES ("admin","123",1);
 INSERT INTO login VALUES ("customer","123",2);
 INSERT INTO login VALUES ("staff","123",3);
@@ -31,30 +31,6 @@ INSERT INTO login VALUES ("bm@tmail.com", "Bm00@123",4 );
 INSERT INTO login VALUES ("chan@ymail.com", "Cfran45_123",4);
 INSERT INTO login VALUES ("sot@ymail.com", "ottisveb@s",3);
 
-  
-/* Data for the table customer */
-INSERT INTO customer VALUES (021,'Alfreds', 'Anders','Mr','Obere Str. 57','Galway', '12209','aa@ymail.com','030-0074321');
-INSERT INTO customer VALUES (077,'Ana','Trujillo','Dr','Avda. de la Constitucin 2222','Cork.','05021','dr.ana@gmail.com','(5) 555-4729');
-INSERT INTO customer VALUES (063,'Berglunds','Christina','Ms','Berguvsvgen  8','Athlone','95822','christy@hmail.com','0921-12 34 67');
-INSERT INTO customer VALUES (081,'Blauer','Moos','Mrs','Forsterstr. 57','Limerick','68306','bm@tmail.com','0621-08924');
-INSERT INTO customer VALUES (072,'Francisco','Chang','Mr','Sierras de Granada. 9993','Roscommon','45231','Chan@ymail.com','0621-08924');
-INSERT INTO customer VALUES (099,'Sven','Ottlieb','Mr','Grenada Court.5','Dublin','77071','sot@ymail.com','0241-059428');
-INSERT INTO customer VALUES (011,'Janine','Labrune','Mrs','Ross Cottage.7a','Athlone','17072','jlai@ymail.com','1111-232391');
-INSERT INTO customer VALUES (056,'Ann','Devon','Mrs','King George. 35','Athlone','66071','anade@kmail.com','7675-3426');
-INSERT INTO customer VALUES (030,'Roland','Mendel','Mrs','Kirchgasse.6','Roscommon','40401','romde@mail.com','(11) 555-9857');
-INSERT INTO customer VALUES (041,'Aria','Cruz','Mrs','Rua Ors .92','Dublin','05442','ruors@nmail.com','(91) 555 55 93');
-
-/* Data for the table employee */	
-INSERT INTO employee VALUES ( 'F124', 'Joe', 'Mullins', '2000-11-01', '24 An Doirin Street', 'Athlone','M', 'Front desk');
-INSERT INTO employee VALUES ( 'D144', 'Joan', 'Macgill', 27, '11 obeye street', 'Galway', 'F', 'Delivery Driver');
-INSERT INTO employee VALUES ( 'M187', 'Jim', 'Mitchell', 51, '12 longway Gold Stree', 'Cork','M', 'Manager');
-INSERT INTO employee VALUES ( 'M199', 'John', 'Magner', 47, '20 Martly Crest', 'Limerick','M', 'Manager');
-INSERT INTO employee VALUES ( 'D151', 'Jean', 'Madden', 45, '8 johnny rockets street', 'Athlone', 'F', 'Delivery Driver');
-INSERT INTO employee VALUES ( 'M166', 'Jack', 'Minogue', 61, '17 knowles jones Street', 'Balislone','M', 'Manager');
-INSERT INTO employee VALUES ( 'F109', 'Josephine', 'Mahony', 30, '7 conrad close', 'Dublin','F', 'Front desk');
-INSERT INTO employee VALUES ( 'F125', 'Rochelle', 'Arthur', 33, '10 Church Street', 'Anthlone', 'F', 'Front desk');
-INSERT INTO employee VALUES ( 'D133', 'Julez', 'Bauer', 27, '3 lush path', 'Dublin', 'M', 'Delivery Driver');
-INSERT INTO employee VALUES ( 'D122', 'James', 'Bond', 27, '9 Comrade Star', 'Moate', 'M', 'Delivery Driver');
 
 /* Data for the table category */	
 INSERT INTO category VALUES (201, 'Starters','Veggetable, Salad,and Finger Foods');
