@@ -37,7 +37,7 @@ public class LoginDAO {
 			return login;
 		};
 		
-		public void addLogin(String username, String password, String accessType) {
+		public void addLogin(String username, String password, int accessType) {
 
 			String cmd = "insert into login values (?,?,?);";
 			try {
@@ -45,7 +45,7 @@ public class LoginDAO {
 				stmtp = con.prepareStatement(cmd);
 				stmtp.setString(1, username);
 				stmtp.setString(2, password);
-				stmtp.setString(3, accessType);
+				stmtp.setInt(3, accessType);
 				System.out.println(stmtp.toString());
 				stmtp.executeUpdate();
 			} catch (Exception e1) {
