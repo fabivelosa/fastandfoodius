@@ -24,7 +24,6 @@ public class LoginDAO {
 			try {
 				con = new DatabaseConnection().connect();
 				stmt = con.createStatement();
-				stmt.executeQuery(cmd);
 				rs = stmt.executeQuery(cmd);
 				while (rs.next()) {
 					login.setUsername(rs.getString(1));

@@ -51,7 +51,7 @@ CREATE TABLE category (
 /*Table structure for table menu */
 DROP TABLE IF EXISTS menu;
 CREATE TABLE menu(
-      menu_id INT  NOT NULL,
+      menu_id INTEGER  NOT NULL,
       menuDescr  VARCHAR (30) NOT NULL,
       menuType VARCHAR (30) NOT NULL,
       category_ID INTEGER NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE orders (
   customer_ID INTEGER NOT NULL,
   orderAddress VARCHAR (30) NOT NULL,
   orderCity VARCHAR (30) NOT NULL,
-  orderPostalCode INTEGER NOT NULL, 
+  orderPostalCode VARCHAR (30) NOT NULL, 
   orderEmailAdress VARCHAR (30) NOT NULL,
   orderPhoneNumber VARCHAR (20) NOT NULL,
   orderDate DATE,
@@ -79,7 +79,7 @@ CREATE TABLE orders (
 /*Table structure for table orderdetail */
 DROP TABLE IF EXISTS orderdetail;
 CREATE TABLE orderdetail (
-   order_ID  INTEGER (7) NOT NULL,
+   order_ID  INTEGER NOT NULL,
    menu_id INTEGER  NOT NULL,
    quantity INTEGER NOT NULL,
    paymentStatus VARCHAR (20) NOT NULL,
@@ -91,8 +91,8 @@ CREATE TABLE orderdetail (
 /*Table structure for table Delivery */
 DROP TABLE IF EXISTS Delivery;
 CREATE TABLE delivery (
-      delivery_id INT NOT NULL,
-      order_ID  INT NOT NULL,
+      delivery_id INTEGER NOT NULL,
+      order_ID  INTEGER NOT NULL,
       deliveredBy  VARCHAR (30) NOT NULL,
       deliveryStatus VARCHAR (30) NOT NULL,
       whenDelivered   DATETIME,

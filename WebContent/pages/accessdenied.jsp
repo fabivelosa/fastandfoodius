@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Fast and Foodius</title>
+<title>Access Denied</title>
 
 <%@include file="../includes/header.jsp" %>
 
@@ -29,8 +29,10 @@
 					href="#services">Start an order</a>
 
 				<% } else {%>
-				<div class="intro-heading text-uppercase">please login to make
+				<div class="intro-heading text-uppercase" >please login to make
 					an order</div>
+					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/forgotpassword.jsp">Forgot Password</a>
 				<% } %>
  			</div>
 		</div>
