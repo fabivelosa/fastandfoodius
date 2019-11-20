@@ -1,18 +1,11 @@
 package com.ait.fastfoodius.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.PersonDAO;
@@ -21,12 +14,12 @@ import com.ait.fastfoodius.resource.DatabaseConnection;
 class PersonDaoTest {
 
 	private PersonDAO dao;
-	private Connection cn;
+	private Connection cn; 
 
 	@BeforeEach
 	public void init() throws ClassNotFoundException, SQLException {
 		cn = new DatabaseConnection().connect();
-		dao = new PersonDAO(cn);
+		dao = new PersonDAO();
 
 	}
 
@@ -35,7 +28,7 @@ class PersonDaoTest {
 		cn.close();
 	}
 
-	@Test
+	@Test 
 	void testInsertAndDelete() {
 
 		PersonBean person = new PersonBean();

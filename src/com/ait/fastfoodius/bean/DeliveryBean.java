@@ -9,7 +9,21 @@ public class DeliveryBean {
       whenDelivered */
 
 	private int deliveryid;
-	int 
+
+	/**
+	 * @return the deliveryid
+	 */
+	public int getDeliveryid() {
+		return deliveryid;
+	}
+
+	/**
+	 * @param deliveryid the deliveryid to set
+	 */
+	public void setDeliveryid(int deliveryid) {
+		this.deliveryid = deliveryid;
+	}
+	
 	
 	
 }

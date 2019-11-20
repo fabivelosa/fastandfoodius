@@ -4,23 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ait.fastfoodius.bean.PersonBean;
+import com.ait.fastfoodius.resource.DatabaseConnection;
 
 public class PersonDAO {
 
-	private Connection cn;
+	// Connection DB
+	private Connection con = null;
+	private Statement stmt = null;
 
-	public PersonDAO(Connection cn) {
-		this.cn = cn;
-
-	}
 
 	public List<PersonBean> findAll() {
 		try {
-			PreparedStatement stm = cn.prepareStatement("SELECT * FROM person");
+			
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person");
 			List<PersonBean> person = new ArrayList<PersonBean>();
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
@@ -28,7 +30,7 @@ public class PersonDAO {
 				person.add(pers);
 			}
 			return person;
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -36,7 +38,9 @@ public class PersonDAO {
 
 	public PersonBean findById(int id) {
 		try {
-			PreparedStatement stm = cn.prepareStatement("SELECT * FROM person WHERE person_Id = ?");
+			con = new DatabaseConnection().connect();
+			
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE person_Id = ?");
 			stm.setInt(1, id);
 			ResultSet rs = stm.executeQuery();
 			if (rs.next()) {
@@ -45,13 +49,17 @@ public class PersonDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public List<PersonBean> findByFirstName(String name) {
 		try {
-			PreparedStatement stm = cn.prepareStatement("SELECT * FROM person WHERE firstName LIKE ?");
+			
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE firstName LIKE ?");
 			stm.setString(1, "%" + name + "%");
 			List<PersonBean> person = new ArrayList<PersonBean>();
 			ResultSet rs = stm.executeQuery();
@@ -60,7 +68,7 @@ public class PersonDAO {
 				person.add(pers);
 			}
 			return person;
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -68,7 +76,8 @@ public class PersonDAO {
 
 	public boolean insertPerson(PersonBean person) {
 		try {
-			PreparedStatement stm = cn
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con
 					.prepareStatement("INSERT INTO person (person_ID, firstName, lastName, dateofbirth, gender,"
 							+ "title, phone, address, city, postalCode, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 			stm.setInt(1, person.getId());
@@ -86,22 +95,29 @@ public class PersonDAO {
 			stm.setString(9, person.getCity());
 			stm.setString(10, person.getPostalCode());
 			stm.setString(11, person.getEmail());
+			System.out.println(stm.toString());
 			stm.executeUpdate();
-
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
 
 	public boolean deletePersonById(int id) {
 		try {
-			PreparedStatement stm = cn.prepareStatement("DELETE FROM person WHERE person_ID= ? ");
+			con = new DatabaseConnection().connect();
+			
+			PreparedStatement stm = con.prepareStatement("DELETE FROM person WHERE person_ID= ? ");
 			stm.setInt(1, id);
 			stm.executeUpdate();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return false;

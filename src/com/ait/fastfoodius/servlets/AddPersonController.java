@@ -80,18 +80,16 @@ public class AddPersonController extends HttpServlet {
 		person.setPostalCode(zip);
 		person.setEmail(email);
 
-		DatabaseConnection db = new DatabaseConnection();
-		try {
-			PersonDAO dao = new PersonDAO(db.connect());
-			dao.insertPerson(person);
+		PersonDAO dao = new PersonDAO();
+		Boolean n = dao.insertPerson(person);
+		
+		if(n) {
 			LoginDAO daoL = new LoginDAO();
-			daoL.addLogin(email, password, 1);
-		} catch (SQLException e) {
-			e.printStackTrace();
+			daoL.addLogin(email, password, 2);
 		}
-		db.disconnect();
+
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/login.jsp");	
+		response.sendRedirect(contextPath + "/pages/login.jsp");
 	}
 
 }
