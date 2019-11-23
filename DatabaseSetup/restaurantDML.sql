@@ -93,67 +93,35 @@ INSERT INTO menu VALUES (509,"Chardonnay","205","4.00");
 INSERT INTO menu VALUES (601,"Lemberg","205","4.00");
 
 /* Data for the table orders */	
-INSERT INTO orders VALUES (10245,'013', 'Obere Str. 57','Galway', '12209','aa@ymail.com','080351977', '2019-02-07', '2019-02-07');     
-INSERT INTO orders VALUES (10246,'021', 'Kirchgasse.6','Roscommon','40401','romde@mail.com','1155598', '2019-02-08', '2019-02-08'); 
-INSERT INTO orders VALUES (10247,'013', 'Obere Str. 57','Galway', '12209','aa@ymail.com','080351977', '2019-02-08', '2019-02-08');
-INSERT INTO orders VALUES (10248,'014', 'Avda. de la Constitucin 2222','Cork.','05021','dr.ana@gmail.com','55554729', '2019-02-08', '2019-02-09');
-INSERT INTO orders VALUES (10249,'022', 'Rua Ors .92','Dublin','05442','ruors@nmail.com','915555593', '2019-03-08', '2019-03-09');
-INSERT INTO orders VALUES (10250,'015', 'Berguvsvgen.  8','Athlone','95822','christy@hmail.com','0921123467', '2019-03-11', '2019-03-15');
-INSERT INTO orders VALUES (10251,'015', 'Berguvsvgen.  8','Athlone','95822','christy@hmail.com','0921123467', '2019-03-16', '2019-03-16');
-INSERT INTO orders VALUES (10252,'016', 'Forsterstr. 57','Limerick','68306','bm@tmail.com','062108924', '2019-03-17', '2019-03-17');
-INSERT INTO orders VALUES (10253,'016', 'Forsterstr. 57','Limerick','68306','bm@tmail.com','062108924', '2019-03-19', '2019-03-20');
-INSERT INTO orders VALUES (10254,'017', 'Sierras de Granada. 9993','Roscommon','45231','Chan@ymail.com','062108924', '2019-04-01', '2019-04-05');
-INSERT INTO orders VALUES (10255,'017', 'Sierras de Granada. 9993','Roscommon','45231','Chan@ymail.com','062108924', '2019-04-10', '2019-04-12');
-INSERT INTO orders VALUES (10256,'018', 'Grenada Court.5','Dublin','77071','sot@ymail.com','0241059428', '2019-05-20', '2019-05-20');
-INSERT INTO orders VALUES (10257,'019', 'Ross Cottage.7a','Athlone','17072','jlai@ymail.com','1111232391', '2019-05-11', '2019-05-22');
-INSERT INTO orders VALUES (10258,'020', 'King George. 35','Athlone','66071','anade@kmail.com','76753426', '2019-06-29', '2019-06-30');
+INSERT INTO orders VALUES (10245,'013', 'Obere Str. 57','Galway', '12209','aa@ymail.com','080351977', '2019-02-07','Paid', '2019-02-07',	'Jb@fastfodi.com', 'Delivered', '2019-02-07');
+INSERT INTO orders VALUES (10246,'021', 'Kirchgasse.6','Roscommon','40401','romde@mail.com','1155598', '2019-02-08','Paid', '2019-02-08',	null, 'Pending', '2019-02-08');
+INSERT INTO orders VALUES (10247,'013', 'Obere Str. 57','Galway', '12209','aa@ymail.com','080351977', '2019-02-08','Paid', '2019-02-08',	'jm@fastfodi.com', 'Delivered', '2019-02-08');
+INSERT INTO orders VALUES (10248,'014', 'Avda. de la Constitucin 2222','Cork.','05021','dr.ana@gmail.com','55554729', '2019-02-08', 'PDelivery', '2019-02-09',	'Jmac@fastfodi.com', 'Delivered', '2019-02-09');
+INSERT INTO orders VALUES (10249,'022', 'Rua Ors .92','Dublin','05442','ruors@nmail.com','915555593', '2019-03-08','Paid', '2019-03-09',	'Jmac@fastfodi.com', 'Delivered' ,'2019-03-09');
+INSERT INTO orders VALUES (10250,'015', 'Berguvsvgen.  8','Athlone','95822','christy@hmail.com','0921123467', '2019-03-11','PDelivery', '2019-03-15',	'jbo@fastfodi.com', 'Delivered' ,'2019-03-15');
+INSERT INTO orders VALUES (10251,'015', 'Berguvsvgen.  8','Athlone','95822','christy@hmail.com','0921123467', '2019-03-16','Paid', '2019-03-16',	null, 'Pending' ,'2019-03-16');
+INSERT INTO orders VALUES (10252,'016', 'Forsterstr. 57','Limerick','68306','bm@tmail.com','062108924', '2019-03-17','Paid', '2019-03-17',	'jm@fastfodi.com', 'Delivered', '2019-03-17');
+INSERT INTO orders VALUES (10253,'016', 'Forsterstr. 57','Limerick','68306','bm@tmail.com','062108924', '2019-03-19','Paid', '2019-03-20',	null, 'Pending', '2019-03-20');
+INSERT INTO orders VALUES (10254,'017', 'Sierras de Granada. 9993','Roscommon','45231','Chan@ymail.com','062108924', '2019-04-01','PDelivery', '2019-04-05',	'jm@fastfodi.com', 'Delivered', '2019-04-05');
+INSERT INTO orders VALUES (10255,'017', 'Sierras de Granada. 9993','Roscommon','45231','Chan@ymail.com','062108924','2019-04-10', 'Paid', '2019-04-12',	'jm@fastfodi.com', 'Assigned', '2019-04-12');
+INSERT INTO orders VALUES (10256,'018', 'Grenada Court.5','Dublin','77071','sot@ymail.com','0241059428', '2019-05-20','Paid', '2019-05-20',	'Jb@fastfodi.com', 'Assigned', '2019-05-20');
+INSERT INTO orders VALUES (10257,'019', 'Ross Cottage.7a','Athlone','17072','jlai@ymail.com','1111232391', '2019-05-11','PDelivery', '2019-05-22',	'Jmac@fastfodi.com', 'Delivered' ,'2019-05-22');
+INSERT INTO orders VALUES (10258,'020', 'King George. 35','Athlone','66071','anade@kmail.com','76753426', '2019-06-29','Paid', '2019-06-30',	'jm@fastfodi.com', 'Assigned', '2019-05-30');
 
 /*Data for the table orderdetail */
-INSERT INTO orderdetail VALUES (10245, 302,  12, 'PDelivery', 'Phone');
-INSERT INTO orderdetail VALUES (10246, 304,  10, 'Paid', 'Online');
-INSERT INTO orderdetail VALUES (10247, 405,  5, 'PDelivery', 'Online');
-INSERT INTO orderdetail VALUES (10248, 404,  9, 'Paid', 'Online');
-INSERT INTO orderdetail VALUES (10249, 506,  40, 'PDelivery', 'Phone');
-INSERT INTO orderdetail VALUES (10250, 505,  10, 'Paid', 'Phone');
-INSERT INTO orderdetail VALUES (10251, 502,   35, 'PDelivery', 'Online');
-INSERT INTO orderdetail VALUES (10252, 407,   6,  'Paid', 'Online');
-INSERT INTO orderdetail VALUES (10253, 601,  20,  'Paid', 'Phone');
-INSERT INTO orderdetail VALUES (10254, 402,   30,  'PDelivery', 'Phone');
-INSERT INTO orderdetail VALUES (10255, 503,   30,  'Paid', 'Online');
-INSERT INTO orderdetail VALUES (10256, 505,  12,  'PDelivery', 'Online');
-INSERT INTO orderdetail VALUES (10257, 601,   6,  'Paid', 'Phone');
-INSERT INTO orderdetail VALUES (10258, 307,  65, 'PDelivery', 'Online');
+INSERT INTO orderdetail VALUES (10245, 302,  12, 'Phone');
+INSERT INTO orderdetail VALUES (10246, 304,  10, 'Online');
+INSERT INTO orderdetail VALUES (10247, 405,  5, 'Online');
+INSERT INTO orderdetail VALUES (10248, 404,  9, 'Online');
+INSERT INTO orderdetail VALUES (10249, 506,  40, 'Phone');
+INSERT INTO orderdetail VALUES (10250, 505,  10, 'Phone');
+INSERT INTO orderdetail VALUES (10251, 502,   35, 'Online');
+INSERT INTO orderdetail VALUES (10252, 407,   6, 'Online');
+INSERT INTO orderdetail VALUES (10253, 601,  20, 'Phone');
+INSERT INTO orderdetail VALUES (10254, 402,   30, 'Phone');
+INSERT INTO orderdetail VALUES (10255, 503,   30, 'Online');
+INSERT INTO orderdetail VALUES (10256, 505,  12, 'Online');
+INSERT INTO orderdetail VALUES (10257, 601,   6, 'Phone');
+INSERT INTO orderdetail VALUES (10258, 307,  65, 'Online');
       
-/*Data for the table delivery */
-INSERT INTO delivery VALUES (901, 10245, 'Jb@fastfodi.com', 'Delivered', '2019-02-07');
-INSERT INTO delivery VALUES (902, 10246, 'jbo@fastfodi.com', 'Pending', '2019-02-08');
-INSERT INTO delivery VALUES (903, 10247, 'jm@fastfodi.com', 'Delivered', '2019-02-08');
-INSERT INTO delivery VALUES (904, 10248, 'Jmac@fastfodi.com', 'Delivered', '2019-02-09');
-INSERT INTO delivery VALUES (905, 10249, 'Jmac@fastfodi.com', 'Delivered' ,'2019-03-09');
-INSERT INTO delivery VALUES (906, 10250, 'jbo@fastfodi.com', 'Delivered' ,'2019-03-15');
-INSERT INTO delivery VALUES (907, 10251, 'jm@fastfodi.com', 'Pending' ,'2019-03-16');
-INSERT INTO delivery VALUES (908, 10252, 'jm@fastfodi.com', 'Delivered', '2019-03-17');
-INSERT INTO delivery VALUES (909, 10253, 'Jmac@fastfodi.com', 'Pending', '2019-03-20');
-INSERT INTO delivery VALUES (910, 10254, 'jm@fastfodi.com', 'Delivered', '2019-04-05');
-INSERT INTO delivery VALUES (912, 10255, 'jm@fastfodi.com', 'Pending', '2019-04-12');
-INSERT INTO delivery VALUES (913, 10256, 'Jb@fastfodi.com', 'Pending', '2019-05-20');
-INSERT INTO delivery VALUES (914, 10257, 'Jmac@fastfodi.com', 'Delivered' ,'2019-05-22');
-INSERT INTO delivery VALUES (915, 10258, 'jm@fastfodi.com', 'Pending', '2019-05-30');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

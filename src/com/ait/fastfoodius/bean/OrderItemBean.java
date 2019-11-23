@@ -2,10 +2,10 @@ package com.ait.fastfoodius.bean;
 
 public class OrderItemBean {
 
-	int order_ID;
-	int menu_ID;
-	int quantity;
-	String orderChannel;
+	private int order_ID;
+	private int menu_ID;
+	private int quantity;
+	private String orderChannel;
 	
 	/**
 	 * @return the order_ID

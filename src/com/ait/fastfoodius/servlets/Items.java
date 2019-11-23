@@ -1,9 +1,6 @@
 package com.ait.fastfoodius.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.MenuBean;
-import com.ait.fastfoodius.dao.LoginDAO;
 import com.ait.fastfoodius.dao.MenuDAO;
-import com.ait.fastfoodius.resource.DatabaseConnection;
 
 /**
  * Servlet implementation class Customer
@@ -62,7 +57,7 @@ public class Items extends HttpServlet {
 		item.setPrice(Double.parseDouble(price));// convert String to Double
 
 		MenuDAO dao = new MenuDAO();
-		Boolean n = dao.insertItem(item);
+		dao.insertItem(item);
 
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath + "/addItem");

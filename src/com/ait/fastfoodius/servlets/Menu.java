@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ait.fastfoodius.bean.LoginBean;
 import com.ait.fastfoodius.bean.MenuBean;
-import com.ait.fastfoodius.dao.LoginDAO;
 import com.ait.fastfoodius.dao.MenuDAO;
 
 /**

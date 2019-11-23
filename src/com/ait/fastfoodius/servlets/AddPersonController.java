@@ -1,7 +1,6 @@
 package com.ait.fastfoodius.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.LoginDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
-import com.ait.fastfoodius.resource.DatabaseConnection;
 
 /**
  * Servlet implementation class Customer

@@ -5,16 +5,19 @@ import java.util.List;
 
 public class OrderBean {
 
-	int order_ID;
-	int customer_ID;
-	String orderAddress;
-	String orderCity;
-	String orderPostalCode;
-	String orderEmailAdress;
-	String orderPhoneNumber;
-	Date orderDate;
-	Date requiredDeliveryDate;
-	String paymentStatus;
+	private int order_ID;
+	private int customer_ID;
+	private String orderAddress;
+	private String orderCity;
+	private String orderPostalCode;
+	private String orderEmailAdress;
+	private String orderPhoneNumber;
+	private Date orderDate;
+	private Date requiredDeliveryDate;
+	private String paymentStatus;
+	private String deliveredby;
+	private Date whenDelivered;
+	private String deliveryStatus;	
 	List<OrderItemBean> orderItem;
 	
 	/**
@@ -136,6 +139,54 @@ public class OrderBean {
 	 */
 	public void setRequiredDeliveryDate(Date requiredDeliveryDate) {
 		this.requiredDeliveryDate = requiredDeliveryDate;
+	}
+	/**
+	 * @return the deliveredby
+	 */
+	public String getDeliveredby() {
+		return deliveredby;
+	}
+	/**
+	 * @param deliveredby the deliveredby to set
+	 */
+	public void setDeliveredby(String deliveredby) {
+		this.deliveredby = deliveredby;
+	}
+	/**
+	 * @return the whenDelivered
+	 */
+	public Date getWhenDelivered() {
+		return whenDelivered;
+	}
+	/**
+	 * @param whenDelivered the whenDelivered to set
+	 */
+	public void setWhenDelivered(Date whenDelivered) {
+		this.whenDelivered = whenDelivered;
+	}
+	/**
+	 * @return the deliveryStatus
+	 */
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	/**
+	 * @param deliveryStatus the deliveryStatus to set
+	 */
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+	/**
+	 * @return the paymentStatus
+	 */
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+	/**
+	 * @param paymentStatus the paymentStatus to set
+	 */
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 	
 	

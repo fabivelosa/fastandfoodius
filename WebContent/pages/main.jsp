@@ -37,15 +37,24 @@
                            </c:if>  
                            <c:if test="${roleId == 3}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/order.jsp">Staff Buttons</a>
+									href="${pageContext.request.contextPath}/addItem">Edit Menu Items</a>
+								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/categories.jsp">Add Menu Category</a>
+								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Start a Customer Order</a>
+								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/sendtodelivery.jsp">Assign Order for Delivery</a>	
                            </c:if>   
                            <c:if test="${roleId == 4}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/order.jsp">Delivery Buttons</a>
+									href="${pageContext.request.contextPath}/pages/order.jsp">View Orders Assigned to Me</a>
+                           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/order.jsp">Report Order Delivered</a>
+                           
                            </c:if> 
                            <c:if test="${roleId == 5}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/order.jsp">Manager Buttons</a>
+									href="${pageContext.request.contextPath}/pages/personregister.jsp">Add Staff Member</a>
                            </c:if> 
 					<!--  if to show buttons related the role -->	
 				<% } else {%>

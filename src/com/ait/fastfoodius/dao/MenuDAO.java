@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,6 @@ public class MenuDAO {
 
 	// Connection DB
 	private Connection con = null;
-	private Statement stmt = null;
 
 	public List<MenuBean> findAll() {
 		try {
