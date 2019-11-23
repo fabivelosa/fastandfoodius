@@ -14,14 +14,14 @@ public class OrderItemDAO {
 		OrderItemBean orderItem = new OrderItemBean();
 
 		public void insertOrderItem(OrderItemBean orderItem) {
-			String cmd = "insert into order values (?,?,?,?);";
+			String cmd = "insert into order values (?,?,?);";
 			try {
 				con = new DatabaseConnection().connect();
 				stmtp = con.prepareStatement(cmd);
 				stmtp.setInt(1, orderItem.getMenu_ID());
 				stmtp.setInt(2, orderItem.getQuantity());
-				stmtp.setString(3, orderItem.getPaymentStatus());
-				stmtp.setString(4, orderItem.getOrderChannel());
+		//		stmtp.setString(3, orderItem.getPaymentStatus());
+				stmtp.setString(3, orderItem.getOrderChannel());
 				System.out.println(stmtp.toString());
 				stmtp.executeUpdate();
 			} catch (Exception e1) {

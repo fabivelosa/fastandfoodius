@@ -108,7 +108,7 @@
 				<div class="form-group col-md-6">
 					<label for="inputCity">City</label> <input type="text"
 						name="inputCity" class="form-control" id="inputCity"
-						placeholder="Please Enter City">>
+						placeholder="Please Enter City">
 				</div>
 
 				<div class="form-group col-md-2">

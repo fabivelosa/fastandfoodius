@@ -22,11 +22,19 @@
 
 	<div class="container">
 
-		<form action="${pageContext.request.contextPath}/addItem"
+		<form action="${pageContext.request.contextPath}/viewItem"
 			method="post">
 			<div>
 				<br> <br> <br> <br> <br>
 				<h1>View Items</h1>
+				<br>
+				<div class="text-align-right">
+
+					<a class="btn btn-primary"
+						href="${pageContext.request.contextPath}/pages/menu.jsp"
+						role="button">Add Item</a>
+				</div>
+				<br>
 
 				<table class="table table-striped">
 					<thead>
@@ -45,30 +53,22 @@
 								<td>${item.itemDescr}</td>
 								<td>${item.categoryId}</td>
 								<td>${item.price}</td>
-								<td>
-									<button class="btn">
-										<i class="fa fa-trash"></i>
-									</button>
-								</td>
+								<td><a class="btn btn-primary"
+									href="${pageContext.request.contextPath}/deleteItem?id=${item.itemId}">
+										<i Delete class="fa fa-trash"></i>
+								</a>
 							</tr>
 						</c:forEach>
 
 					</tbody>
 				</table>
 			</div>
-			<div class="text-center">
-				<button type="submit" class="btn btn-primary">Add Item</button>
-			</div>
+
 		</form>
 	</div>
 
-
-
-
-
 	<%@include file="../includes/footer.jsp"%>
 </body>
-
 
 </html>
 
