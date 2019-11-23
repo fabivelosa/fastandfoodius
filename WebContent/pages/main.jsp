@@ -33,7 +33,7 @@
                            </c:if>  
                             <c:if test="${roleId == 2}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/order.jsp">Start an order</a>
+									href="${pageContext.request.contextPath}/menu">Start an order</a>
                            </c:if>  
                            <c:if test="${roleId == 3}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"

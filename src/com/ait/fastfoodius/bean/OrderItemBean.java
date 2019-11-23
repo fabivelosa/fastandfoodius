@@ -5,7 +5,6 @@ public class OrderItemBean {
 	int order_ID;
 	int menu_ID;
 	int quantity;
-	String paymentStatus;
 	String orderChannel;
 	
 	/**
@@ -43,18 +42,6 @@ public class OrderItemBean {
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-	/**
-	 * @return the paymentStatus
-	 */
-	public String getPaymentStatus() {
-		return paymentStatus;
-	}
-	/**
-	 * @param paymentStatus the paymentStatus to set
-	 */
-	public void setPaymentStatus(String paymentStatus) {
-		this.paymentStatus = paymentStatus;
 	}
 	/**
 	 * @return the orderChannel

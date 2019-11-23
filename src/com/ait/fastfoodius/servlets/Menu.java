@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ait.fastfoodius.bean.LoginBean;
 import com.ait.fastfoodius.bean.MenuBean;
+import com.ait.fastfoodius.dao.LoginDAO;
+import com.ait.fastfoodius.dao.MenuDAO;
 
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/Menu")
+@WebServlet("/menu")
 public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,12 +34,13 @@ public class Menu extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//access MEnu DAO
-		List<MenuBean> products = null;
+		//access Menu DAO
 		
-		request.setAttribute("products",products );
+		MenuDAO menuDao = new MenuDAO();
+		List<MenuBean> products =  menuDao.findAll();
+		request.getSession().setAttribute("menuList",products );
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/menu.jsp");
+		response.sendRedirect(contextPath+"/pages/order.jsp");
 	}
 
 	/**

@@ -14,6 +14,7 @@ public class OrderBean {
 	String orderPhoneNumber;
 	Date orderDate;
 	Date requiredDeliveryDate;
+	String paymentStatus;
 	List<OrderItemBean> orderItem;
 	
 	/**
