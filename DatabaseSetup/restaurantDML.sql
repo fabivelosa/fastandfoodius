@@ -63,34 +63,34 @@ INSERT INTO category VALUES (204,'Main Course');
 INSERT INTO category VALUES (205, 'Drinks');
   
 /* Data for the table menu */	  
-INSERT INTO menu VALUES (301,"Rolls", "Finger Foods","201","3.00");
-INSERT INTO menu VALUES (302,"French Onion Soup", "Soup","201","3.00");
-INSERT INTO menu VALUES (303,"Tomato Bruschetta", "Vegetable","201","3.00");
-INSERT INTO menu VALUES (304,"Potato and Mushroom Chaat", "Vegetable", "204","3.00");
-INSERT INTO menu VALUES (305,"Mixed Green Salad", "Salad", "202","3.00");
-INSERT INTO menu VALUES (306,"Chicken Tikka", "Non-Veg","204","4.00");
-INSERT INTO menu VALUES (307,"Tandoori Chicken", "Non-Veg","204","4.00");
-INSERT INTO menu VALUES (308,"French Fries", "Non-Veg","202","4.00");
-INSERT INTO menu VALUES (309,"Chicken Tikka on Puree","Non-Veg","204","4.00");
-INSERT INTO menu VALUES (401, "Lamb Tikka", "Non-Veg","204","4.00");
-INSERT INTO menu VALUES (402,"Garlic Bread", "Bread","202","4.00");
-INSERT INTO menu VALUES (403,"Roast Beef with Vegetables", "Non-Veg", "204","3.00");
-INSERT INTO menu VALUES (404,"Grilled Salmon with Dill Sauce","Non-Veg","204","4.00");
-INSERT INTO menu VALUES (405,"Marrakesh Vegetarian Curry", "Non-Veg","204","4.00");
-INSERT INTO menu VALUES (406,"Eggplant Lasagne", "Non-Veg","204","4.00");
-INSERT INTO menu VALUES (407,"Apple Pie with Cream","Pie","203","4.00");
-INSERT INTO menu VALUES (408,"Vanilla Ice Cream","Ice Cream","203","4.00");
-INSERT INTO menu VALUES (409,"Crepe Suzette", "Cake","203","4.00");
-INSERT INTO menu VALUES (501,"Fruit Salad","Salad","203","4.00");
-INSERT INTO menu VALUES (502,"Coke","Soft Drinks","205","4.00");
-INSERT INTO menu VALUES (503,"Lemonade", "Soft Drinks", "205","4.00");
-INSERT INTO menu VALUES (504,"Wellington","Spirits", "205","4.00");
-INSERT INTO menu VALUES (505,"Klipdriff","Spirits","205","4.00");
-INSERT INTO menu VALUES (506,"Lemonade", "Soft Drinks","205","4.00");
-INSERT INTO menu VALUES (507,"Bells","Spirits", "205","4.00");
-INSERT INTO menu VALUES (508,"Edenhof", "Red Wine", "205","4.00");
-INSERT INTO menu VALUES (509,"Chardonnay","White Wine","205","4.00");
-INSERT INTO menu VALUES (601,"Lemberg","Rose Wine", "205","4.00");
+INSERT INTO menu VALUES (301,"Rolls", "201","3.00");
+INSERT INTO menu VALUES (302,"French Onion Soup", "201","3.00");
+INSERT INTO menu VALUES (303,"Tomato Bruschetta", "201","3.00");
+INSERT INTO menu VALUES (304,"Potato and Mushroom Chaat", "204","3.00");
+INSERT INTO menu VALUES (305,"Mixed Green Salad", "202","3.00");
+INSERT INTO menu VALUES (306,"Chicken Tikka", "204","4.00");
+INSERT INTO menu VALUES (307,"Tandoori Chicken", "204","4.00");
+INSERT INTO menu VALUES (308,"French Fries", "202","4.00");
+INSERT INTO menu VALUES (309,"Chicken Tikka on Puree","204","4.00");
+INSERT INTO menu VALUES (401, "Lamb Tikka", "204","4.00");
+INSERT INTO menu VALUES (402,"Garlic Bread","202","4.00");
+INSERT INTO menu VALUES (403,"Roast Beef with Vegetables", "204","3.00");
+INSERT INTO menu VALUES (404,"Grilled Salmon with Dill Sauce","204","4.00");
+INSERT INTO menu VALUES (405,"Marrakesh Vegetarian Curry","204","4.00");
+INSERT INTO menu VALUES (406,"Eggplant Lasagne","204","4.00");
+INSERT INTO menu VALUES (407,"Apple Pie with Cream","203","4.00");
+INSERT INTO menu VALUES (408,"Vanilla Ice Cream","203","4.00");
+INSERT INTO menu VALUES (409,"Crepe Suzette","203","4.00");
+INSERT INTO menu VALUES (501,"Fruit Salad","203","4.00");
+INSERT INTO menu VALUES (502,"Coke","205","4.00");
+INSERT INTO menu VALUES (503,"Lemonade","205","4.00");
+INSERT INTO menu VALUES (504,"Wellington","205","4.00");
+INSERT INTO menu VALUES (505,"Klipdriff","205","4.00");
+INSERT INTO menu VALUES (506,"Lemonade", "205","4.00");
+INSERT INTO menu VALUES (507,"Bells","205","4.00");
+INSERT INTO menu VALUES (508,"Edenhof","205","4.00");
+INSERT INTO menu VALUES (509,"Chardonnay","205","4.00");
+INSERT INTO menu VALUES (601,"Lemberg","205","4.00");
 
 /* Data for the table orders */	
 INSERT INTO orders VALUES (10245,'013', 'Obere Str. 57','Galway', '12209','aa@ymail.com','080351977', '2019-02-07', '2019-02-07');     
@@ -139,6 +139,11 @@ INSERT INTO delivery VALUES (912, 10255, 'jm@fastfodi.com', 'Pending', '2019-04-
 INSERT INTO delivery VALUES (913, 10256, 'Jb@fastfodi.com', 'Pending', '2019-05-20');
 INSERT INTO delivery VALUES (914, 10257, 'Jmac@fastfodi.com', 'Delivered' ,'2019-05-22');
 INSERT INTO delivery VALUES (915, 10258, 'jm@fastfodi.com', 'Pending', '2019-05-30');
+
+
+
+
+
 
 
 

@@ -29,7 +29,7 @@ public class AddPersonController extends HttpServlet {
 	 */
 	public AddPersonController() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -51,8 +51,8 @@ public class AddPersonController extends HttpServlet {
 		String name = request.getParameter("inputFirstName");
 		String lastName = request.getParameter("inputLastName");
 		String date = request.getParameter("inputDateOfBirth");
-		String gender = request.getParameter("inputGender");
-		String title = request.getParameter("inputTitle");
+		String gender = request.getParameter("gender");
+		String title = request.getParameter("title");
 		String phone = request.getParameter("inputPhone");
 		String address = request.getParameter("inputAddress");
 		String city = request.getParameter("inputCity");
@@ -82,8 +82,8 @@ public class AddPersonController extends HttpServlet {
 
 		PersonDAO dao = new PersonDAO();
 		Boolean n = dao.insertPerson(person);
-		
-		if(n) {
+
+		if (n) {
 			LoginDAO daoL = new LoginDAO();
 			daoL.addLogin(email, password, 2);
 		}
