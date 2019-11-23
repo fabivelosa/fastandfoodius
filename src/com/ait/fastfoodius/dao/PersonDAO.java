@@ -17,10 +17,9 @@ public class PersonDAO {
 	private Connection con = null;
 	private Statement stmt = null;
 
-
 	public List<PersonBean> findAll() {
 		try {
-			
+
 			con = new DatabaseConnection().connect();
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM person");
 			List<PersonBean> person = new ArrayList<PersonBean>();
@@ -39,7 +38,7 @@ public class PersonDAO {
 	public PersonBean findById(int id) {
 		try {
 			con = new DatabaseConnection().connect();
-			
+
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE person_Id = ?");
 			stm.setInt(1, id);
 			ResultSet rs = stm.executeQuery();
@@ -57,7 +56,7 @@ public class PersonDAO {
 
 	public List<PersonBean> findByFirstName(String name) {
 		try {
-			
+
 			con = new DatabaseConnection().connect();
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE firstName LIKE ?");
 			stm.setString(1, "%" + name + "%");
@@ -79,29 +78,25 @@ public class PersonDAO {
 			con = new DatabaseConnection().connect();
 			PreparedStatement stm = con
 					.prepareStatement("INSERT INTO person (person_ID, firstName, lastName, dateofbirth, gender,"
-							+ "title, phone, address, city, postalCode, emailAddress) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-			stm.setInt(1, person.getId());
-			stm.setString(2, person.getFirstName());
-			stm.setString(3, person.getLastName());
+							+ "title, phone, address, city, postalCode, emailAddress) VALUES (null,?,?,?,?,?,?,?,?,?,?)");
+			stm.setString(1, person.getFirstName());
+			stm.setString(2, person.getLastName());
 			if (person.getDateofbirth() != null) {
-				stm.setDate(4, new java.sql.Date(person.getDateofbirth().getTime()));
+				stm.setDate(3, new java.sql.Date(person.getDateofbirth().getTime()));
 			} else {
-				stm.setDate(4, null);
+				stm.setDate(3, null);
 			}
-			stm.setString(5, person.getGender());
-			stm.setString(6, person.getTitle());
-			stm.setString(7, person.getPhone());
-			stm.setString(8, person.getAddress());
-			stm.setString(9, person.getCity());
-			stm.setString(10, person.getPostalCode());
-			stm.setString(11, person.getEmail());
+			stm.setString(4, person.getGender());
+			stm.setString(5, person.getTitle());
+			stm.setString(6, person.getPhone());
+			stm.setString(7, person.getAddress());
+			stm.setString(8, person.getCity());
+			stm.setString(9, person.getPostalCode());
+			stm.setString(10, person.getEmail());
 			System.out.println(stm.toString());
 			stm.executeUpdate();
 			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -110,7 +105,7 @@ public class PersonDAO {
 	public boolean deletePersonById(int id) {
 		try {
 			con = new DatabaseConnection().connect();
-			
+
 			PreparedStatement stm = con.prepareStatement("DELETE FROM person WHERE person_ID= ? ");
 			stm.setInt(1, id);
 			stm.executeUpdate();

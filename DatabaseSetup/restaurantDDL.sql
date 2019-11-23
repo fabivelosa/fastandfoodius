@@ -6,7 +6,7 @@ USE Restaurant;
 /*Table structure for table person */
 DROP TABLE IF EXISTS person;
 CREATE TABLE person (
-  person_ID INTEGER  NOT NULL,
+  person_ID INTEGER AUTO_INCREMENT NOT NULL,
   firstName VARCHAR(40) NOT NULL,
   lastName VARCHAR(30) NOT NULL,
   dateofbirth date NOT NULL,
@@ -51,12 +51,11 @@ CREATE TABLE category (
 /*Table structure for table menu */
 DROP TABLE IF EXISTS menu;
 CREATE TABLE menu(
-      menu_id INTEGER  NOT NULL,
-      menuDescr  VARCHAR (30) NOT NULL,
-      menuType VARCHAR (30) NOT NULL,
+      item_id INTEGER AUTO_INCREMENT NOT NULL,
+      itemDescr  VARCHAR (30) NOT NULL,
       category_ID INTEGER NOT NULL,
       price  DOUBLE  NOT NULL,
-      PRIMARY KEY (menu_id),
+      PRIMARY KEY (item_id),
       FOREIGN KEY (category_ID) REFERENCES category (category_ID)
 );
 
@@ -80,11 +79,11 @@ CREATE TABLE orders (
 DROP TABLE IF EXISTS orderdetail;
 CREATE TABLE orderdetail (
    order_ID  INTEGER NOT NULL,
-   menu_id INTEGER  NOT NULL,
+   item_id INTEGER  NOT NULL,
    quantity INTEGER NOT NULL,
    paymentStatus VARCHAR (20) NOT NULL,
    orderChannel VARCHAR (20) NOT NULL,
-   FOREIGN KEY (menu_id) REFERENCES menu (menu_id),
+   FOREIGN KEY (item_id) REFERENCES menu (item_id),
    FOREIGN KEY (order_ID) REFERENCES orders (order_ID)
 );
 
