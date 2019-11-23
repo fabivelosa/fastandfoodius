@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <%@include file="../includes/header.jsp"%>
 
 <head>
@@ -12,7 +11,6 @@
 </head>
 
 <body id="page-top">
-
 	<!-- Navigation -->
 	<%@include file="../includes/navbar_menu.jsp"%>
 
@@ -22,8 +20,7 @@
 
 		<form action="${pageContext.request.contextPath}/addItem"
 			method="post">
-			<br> <br> <br> <br>
-			<br>
+			<br> <br> <br> <br> <br>
 			<div>
 				<h1>Item</h1>
 			</div>
@@ -56,12 +53,7 @@
 		</form>
 	</div>
 
-
-
-
-
 	<%@include file="../includes/footer.jsp"%>
 </body>
-
 
 </html>

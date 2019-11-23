@@ -65,7 +65,7 @@ public class Items extends HttpServlet {
 		Boolean n = dao.insertItem(item);
 
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/pages/menu.jsp");
+		response.sendRedirect(contextPath + "/addItem");
 	}
 
 }
