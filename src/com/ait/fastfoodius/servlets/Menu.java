@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.MenuBean;
 import com.ait.fastfoodius.dao.MenuDAO;
+import com.ait.fastfoodius.resource.MenuCategory;
 
 /**
  * Servlet implementation class Menu
@@ -32,11 +33,24 @@ public class Menu extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//access Menu DAO
+		
 		
 		MenuDAO menuDao = new MenuDAO();
-		List<MenuBean> products =  menuDao.findAll();
-		request.getSession().setAttribute("menuList",products );
+		List<MenuBean> starters =  menuDao.findByCategory(MenuCategory.STARTER.getIdCategory());
+		request.getSession().setAttribute("starters",starters );
+		
+		List<MenuBean> sidedish =  menuDao.findByCategory(MenuCategory.SIDEDISH.getIdCategory());
+		request.getSession().setAttribute("sidedish",sidedish );
+		
+		List<MenuBean> maincourse =  menuDao.findByCategory(MenuCategory.MAINCOURSE.getIdCategory());
+		request.getSession().setAttribute("maincourse",maincourse );
+	
+		List<MenuBean> dessert =  menuDao.findByCategory(MenuCategory.DESSERT.getIdCategory());
+		request.getSession().setAttribute("dessert",dessert );
+	
+		List<MenuBean> drink =  menuDao.findByCategory(MenuCategory.DRINKS.getIdCategory());
+		request.getSession().setAttribute("drink",drink );
+	
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath+"/pages/order.jsp");
 	}

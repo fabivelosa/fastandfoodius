@@ -16,11 +16,12 @@ public class MenuDAO {
 	private Connection con = null;
 
 	public List<MenuBean> findAll() {
+		List<MenuBean> item = new ArrayList<MenuBean>();
 		try {
 
 			con = new DatabaseConnection().connect();
-			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu");
-			List<MenuBean> item = new ArrayList<MenuBean>();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu ;");
+			
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
 				MenuBean menu = extract(rs);
@@ -34,16 +35,17 @@ public class MenuDAO {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return item;
 	}
 
 	public List<MenuBean> findByDescription(String description) {
+		List<MenuBean> item = new ArrayList<MenuBean>();
 		try {
 
 			con = new DatabaseConnection().connect();
-			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu WHERE menuDescr LIKE ?");
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu WHERE menuDescr LIKE ? ;");
 			stm.setString(1, "%" + description + "%");
-			List<MenuBean> item = new ArrayList<MenuBean>();
+			
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
 				MenuBean menu = extract(rs);
@@ -53,18 +55,60 @@ public class MenuDAO {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return item;
+	}
+	
+	
+	public MenuBean findById(int id) {
+		MenuBean item = null;
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu WHERE item_ID = ? ;");
+			stm.setInt(1, id);
+			
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				item = extract(rs);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return item;
 	}
 
+	public List<MenuBean> findByCategory(int category) {
+		List<MenuBean> item = new ArrayList<MenuBean>();
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM menu WHERE category_id = ? ; ");
+			stm.setInt(1, category);
+			
+			
+			ResultSet rs = stm.executeQuery();
+			System.out.println(stm);
+			while (rs.next()) {
+				MenuBean menu = extract(rs);
+				item.add(menu);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return item;
+	}
+
+	
 	public boolean insertItem(MenuBean item) {
 		try {
 			con = new DatabaseConnection().connect();
 			PreparedStatement stm = con
-					.prepareStatement("INSERT INTO menu (item_id, itemDescr,category_ID,price) VALUES (NULL,?,?,?)");
+					.prepareStatement("INSERT INTO menu (item_id, itemDescr,category_ID,price) VALUES (NULL,?,?,?) ;");
 			stm.setString(1, item.getItemDescr());
 			stm.setInt(2, item.getCategoryId());
 			stm.setDouble(3, item.getPrice());
-			System.out.println(stm.toString());
 			stm.executeUpdate();
 			return true;
 		} catch (SQLException | ClassNotFoundException e) {
@@ -77,7 +121,7 @@ public class MenuDAO {
 		try {
 			con = new DatabaseConnection().connect();
 
-			PreparedStatement stm = con.prepareStatement("DELETE FROM menu WHERE item_ID= ? ");
+			PreparedStatement stm = con.prepareStatement("DELETE FROM menu WHERE item_ID= ? ; ");
 			stm.setInt(1, id);
 			stm.executeUpdate();
 			return true;
