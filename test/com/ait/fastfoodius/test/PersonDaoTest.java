@@ -43,7 +43,7 @@ class PersonDaoTest {
 		person.setFirstName("John");
 		person.setLastName("Travolta");
 		person.setDateofbirth(new Date());
-		person.setGender("Male");
+		person.setGender("M");
 		person.setTitle("Customer");
 		person.setAddress("14, Grafton Street");
 		person.setCity("Dublin");

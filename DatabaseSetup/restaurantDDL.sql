@@ -13,7 +13,7 @@ CREATE TABLE person (
     title VARCHAR(30) NOT NULL,
     address VARCHAR(60) NOT NULL,
     city VARCHAR(15) NOT NULL,
-    gender VARCHAR(1) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
     postalCode VARCHAR(10) NOT NULL,
     emailAddress VARCHAR(30) NOT NULL,
     phone VARCHAR(24) NOT NULL,

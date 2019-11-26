@@ -16,7 +16,7 @@ import com.ait.fastfoodius.dao.LoginDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
- * Servlet implementation class Customer
+ * Servlet implementation class Person
  */
 @WebServlet("/addPerson")
 public class AddPersonController extends HttpServlet {

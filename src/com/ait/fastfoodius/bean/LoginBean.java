@@ -40,6 +40,11 @@ public class LoginBean {
 	public void setRole(int role) {
 		this.role = role;
 	}
+	public void addLogin(LoginBean login) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 	
 	
