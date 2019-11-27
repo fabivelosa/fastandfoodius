@@ -47,7 +47,7 @@
                            </c:if>   
                            <c:if test="${roleId == 4}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/order.jsp">View Orders Assigned to Me</a>
+									href="${pageContext.request.contextPath}/pages/vieworderassigned.jsp">View Orders Assigned to Me</a>
                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/pages/order.jsp">Report Order Delivered</a>
                            

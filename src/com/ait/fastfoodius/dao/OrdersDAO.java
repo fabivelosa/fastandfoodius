@@ -1,10 +1,14 @@
 package com.ait.fastfoodius.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import com.ait.fastfoodius.bean.MenuBean;
 import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.resource.DatabaseConnection;
 
@@ -63,7 +67,6 @@ public class OrdersDAO {
 		}
 	}
 
-
 	public void retrieveOrderbyID(int orderId) {
 		ResultSet rs = null;
 		String cmd = "select * from delivery where orderId = ? ;";
@@ -95,21 +98,38 @@ public class OrdersDAO {
 			e1.printStackTrace();
 		}
 	}
-	
-	public void retrieveOrderAssigned(String deliveredBy) {
+
+	public List<OrderBean> retrieveOrderAssigned(String deliveredBy) {
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
 		ResultSet rs = null;
-		String cmd = "select * from delivery where deliveryStatus = deliveryStatus.ASSIGNED and deliveredBy = ? ;";
+		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber "
+				+ "from orders where deliveryStatus = deliveryStatus.ASSIGNED and deliveredBy = ? ;";
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
 			stmtp.setString(1, deliveredBy);
+			System.out.println(cmd.toString());
 			rs = stmtp.executeQuery();
 			while (rs.next()) {
-				// fullfill order
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				orderlist.add(order);
+
 			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			stmtp.close();
+			rs.close();
+			con.close();
+
+			return orderlist;
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
+		return orderlist;
 	}
 
 	public void updateOrderDelivered(String deliveryStatus, String loginDeliverer, Date deliveryDate) {
