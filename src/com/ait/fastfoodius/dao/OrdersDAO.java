@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import com.ait.fastfoodius.bean.MenuBean;
 import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.resource.DatabaseConnection;
+import com.ait.fastfoodius.resource.deliveryStatus;
 
 public class OrdersDAO {
 	// Connection DB
@@ -103,11 +104,12 @@ public class OrdersDAO {
 		List<OrderBean> orderlist = new ArrayList<OrderBean>();
 		ResultSet rs = null;
 		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber "
-				+ "from orders where deliveryStatus = deliveryStatus.ASSIGNED and deliveredBy = ? ;";
+				+ "from orders where deliveryStatus = ?  and deliveredBy = ? ;";
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, deliveredBy);
+			stmtp.setString(1, deliveryStatus.ASSIGNED.toString());
+			stmtp.setString(2, deliveredBy);
 			System.out.println(cmd.toString());
 			rs = stmtp.executeQuery();
 			while (rs.next()) {
@@ -121,11 +123,9 @@ public class OrdersDAO {
 				orderlist.add(order);
 
 			}
-			stmtp.close();
-			rs.close();
-			con.close();
+			
 
-			return orderlist;
+			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -144,5 +144,45 @@ public class OrdersDAO {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		
 	}
+
+	public List<OrderBean> retrieveAllOrders() {
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, customer_ID,  orderAddress, orderCity, orderPostalCode, orderEmailAdress, "
+				+ "orderPhoneNumber,orderDate, paymentStatus, "
+				+ "requiredDeliveryDate,  deliveredBy, deliveryStatus, whenDelivered"
+				+ "from orders ;";
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			System.out.println(cmd.toString());
+			rs = stmtp.executeQuery();
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setCustomer_ID(rs.getInt("customer_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setOrderPostalCode(rs.getString("orderPostalCode"));
+				order.setOrderEmailAdress(rs.getString("orderEmailAdress"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				order.setOrderDate(rs.getDate("orderDate"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				order.setDeliveredby(rs.getString("deliveredBy"));
+				order.setWhenDelivered(rs.getDate("whenDelivered"));
+				orderlist.add(order);
+}
+			
+
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return orderlist;
+	}
+	
 }

@@ -22,11 +22,11 @@
 
 	<div class="container">
 
-		<form action="${pageContext.request.contextPath}/vieworders"
+		<form action="${pageContext.request.contextPath}/viewallorders"
 			method="post">
 			<div>
 				<br> <br> <br> <br> <br>
-				<h1>View Orders</h1>
+				<h1>View All Orders</h1>
 				<br>
 				
 				<br>
@@ -35,22 +35,37 @@
 					<thead>
 						<tr>
 							<th>Order ID</th>
+							<th>Customer ID</th>
 							<th>Order Address</th>
 							<th>City</th>
+							<th>Postal Code</th>
+							<th>Email Address</th>
+							<th>Phone Number</th>
+							<th>Order Date</th>
 							<th>Required Delivery Date</th>
 							<th>Payment Status</th>
-							<th>Phone</th>
+							<th>Delivery Status</th>
+							<th>Delivered By</th>
+							<th>When Delivered</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="order" items="${vieworders}">
+						<c:forEach var="order" items="${viewallorders}">
 							<tr>
 								<td>${order.order_ID}</td>
+								<td>${order.customer_ID}</td>
 								<td>${order.orderAddress}</td>
 								<td>${order.orderCity}</td>
+								<td>${order.postalCode}</td>
+								<td>${order.orderEmailAddress}</td>
+								<td>${order.orderPhoneNumber}</td>
+								<td>${order.orderDate}</td>
 								<td>${order.requiredDeliveryDate}</td>
 								<td>${order.paymentStatus}</td>
-								<td>${order.orderPhoneNumber}</td>
+								<td>${order.deliveryStatus}</td>
+								<td>${order.deliveredby}</td>
+								<td>${order.whenDelivered}</td>
+								
 								
 							</tr>
 						</c:forEach>

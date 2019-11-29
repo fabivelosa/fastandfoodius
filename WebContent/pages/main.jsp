@@ -47,7 +47,7 @@
                            </c:if>   
                            <c:if test="${roleId == 4}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/vieworderassigned.jsp">View Orders Assigned to Me</a>
+									href="${pageContext.request.contextPath}/vieworders">View Orders Assigned to Me</a>
                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/pages/order.jsp">Report Order Delivered</a>
                            
@@ -55,6 +55,8 @@
                            <c:if test="${roleId == 5}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/pages/personregister.jsp">Add Staff Member</a>
+									<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+									href="${pageContext.request.contextPath}/pages/viewallorders.jsp">View all Customers Orders</a>
                            </c:if> 
 					<!--  if to show buttons related the role -->	
 				<% } else {%>
