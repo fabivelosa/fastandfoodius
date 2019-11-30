@@ -14,6 +14,7 @@
 <%   request.getSession().setAttribute("logged", Boolean.FALSE); %>
 <%  request.getSession(false).removeAttribute("order"); %>
 
+
 <%@include file="../includes/header.jsp" %>
 
 </head>

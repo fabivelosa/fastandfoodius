@@ -56,8 +56,8 @@ public class AddPersonController extends HttpServlet {
 		String city = request.getParameter("inputCity");
 		String zip = request.getParameter("inputZip");
 		String email = request.getParameter("inputEmail");
-		String password = request.getParameter("inputPassword4");
-		String repeatPass = request.getParameter("inputPassword4");
+		String password = request.getParameter("inputPassword");
+		String repeatPass = request.getParameter("inputRepeat");
 
 		PersonBean person = new PersonBean();
 		person.setFirstName(name);
