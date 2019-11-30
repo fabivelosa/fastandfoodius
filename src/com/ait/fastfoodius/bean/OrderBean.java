@@ -7,10 +7,11 @@ public class OrderBean {
 
 	private int order_ID;
 	private int customer_ID;
+	private String orderChannel;
 	private String orderAddress;
 	private String orderCity;
 	private String orderPostalCode;
-	private String orderEmailAdress;
+	private String orderEmailAddress; 
 	private String orderPhoneNumber;
 	private Date orderDate;
 	private Date requiredDeliveryDate;
@@ -20,18 +21,7 @@ public class OrderBean {
 	private String deliveryStatus;	
 	List<OrderItemBean> orderItem;
 	
-	/**
-	 * @return the orderItem
-	 */
-	public List<OrderItemBean> getOrderItem() {
-		return orderItem;
-	}
-	/**
-	 * @param orderItem the orderItem to set
-	 */
-	public void setOrderItem(List<OrderItemBean> orderItem) {
-		this.orderItem = orderItem;
-	}
+	
 	/**
 	 * @return the order_ID
 	 */
@@ -55,6 +45,18 @@ public class OrderBean {
 	 */
 	public void setCustomer_ID(int customer_ID) {
 		this.customer_ID = customer_ID;
+	}
+	/**
+	 * @return the orderChannel
+	 */
+	public String getOrderChannel() {
+		return orderChannel;
+	}
+	/**
+	 * @param orderChannel the orderChannel to set
+	 */
+	public void setOrderChannel(String orderChannel) {
+		this.orderChannel = orderChannel;
 	}
 	/**
 	 * @return the orderAddress
@@ -93,16 +95,16 @@ public class OrderBean {
 		this.orderPostalCode = orderPostalCode;
 	}
 	/**
-	 * @return the orderEmailAdress
+	 * @return the orderEmailAddress
 	 */
-	public String getOrderEmailAdress() {
-		return orderEmailAdress;
+	public String getOrderEmailAddress() {
+		return orderEmailAddress;
 	}
 	/**
-	 * @param orderEmailAdress the orderEmailAdress to set
+	 * @param orderEmailAddress the orderEmailAddress to set
 	 */
-	public void setOrderEmailAdress(String orderEmailAdress) {
-		this.orderEmailAdress = orderEmailAdress;
+	public void setOrderEmailAddress(String orderEmailAddress) {
+		this.orderEmailAddress = orderEmailAddress;
 	}
 	/**
 	 * @return the orderPhoneNumber
@@ -141,6 +143,18 @@ public class OrderBean {
 		this.requiredDeliveryDate = requiredDeliveryDate;
 	}
 	/**
+	 * @return the paymentStatus
+	 */
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+	/**
+	 * @param paymentStatus the paymentStatus to set
+	 */
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+	/**
 	 * @return the deliveredby
 	 */
 	public String getDeliveredby() {
@@ -177,18 +191,16 @@ public class OrderBean {
 		this.deliveryStatus = deliveryStatus;
 	}
 	/**
-	 * @return the paymentStatus
+	 * @return the orderItem
 	 */
-	public String getPaymentStatus() {
-		return paymentStatus;
+	public List<OrderItemBean> getOrderItem() {
+		return orderItem;
 	}
 	/**
-	 * @param paymentStatus the paymentStatus to set
+	 * @param orderItem the orderItem to set
 	 */
-	public void setPaymentStatus(String paymentStatus) {
-		this.paymentStatus = paymentStatus;
+	public void setOrderItem(List<OrderItemBean> orderItem) {
+		this.orderItem = orderItem;
 	}
-	
-	
 	
 }

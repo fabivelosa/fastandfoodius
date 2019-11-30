@@ -16,7 +16,7 @@ import com.ait.fastfoodius.dao.LoginDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
- * Servlet implementation class Customer
+ * Servlet implementation class Person
  */
 @WebServlet("/addPerson")
 public class AddPersonController extends HttpServlet {
@@ -56,8 +56,8 @@ public class AddPersonController extends HttpServlet {
 		String city = request.getParameter("inputCity");
 		String zip = request.getParameter("inputZip");
 		String email = request.getParameter("inputEmail");
-		String password = request.getParameter("inputPassword4");
-		String repeatPass = request.getParameter("inputPassword4");
+		String password = request.getParameter("inputPassword");
+		String repeatPass = request.getParameter("inputRepeat");
 
 		PersonBean person = new PersonBean();
 		person.setFirstName(name);
@@ -83,7 +83,7 @@ public class AddPersonController extends HttpServlet {
 
 		if (n) {
 			LoginDAO daoL = new LoginDAO();
-			daoL.addLogin(email, password, 2);
+			daoL.addLogin(email, password, 2); 
 		}
 
 		String contextPath = request.getContextPath();

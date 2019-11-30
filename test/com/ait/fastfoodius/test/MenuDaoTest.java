@@ -14,8 +14,8 @@ import com.ait.fastfoodius.resource.DatabaseConnection;
 public class MenuDaoTest {
 
 	private MenuDAO dao;
-	private Connection cn;
-
+	private Connection cn; 
+ 
 	@BeforeEach
 	public void init() throws ClassNotFoundException, SQLException {
 		cn = new DatabaseConnection().connect();

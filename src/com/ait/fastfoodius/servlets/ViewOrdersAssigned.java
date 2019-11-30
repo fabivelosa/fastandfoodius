@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ait.fastfoodius.bean.MenuBean;
-import com.ait.fastfoodius.dao.MenuDAO;
-import com.ait.fastfoodius.resource.MenuCategory;
+import com.ait.fastfoodius.bean.OrderBean;
+import com.ait.fastfoodius.dao.OrdersDAO;
 
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/menu")
-public class Menu extends HttpServlet {
+@WebServlet("/vieworders")
+public class ViewOrdersAssigned extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Menu() {
+    public ViewOrdersAssigned() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +32,12 @@ public class Menu extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		MenuDAO menuDao = new MenuDAO();
-		List<MenuBean> starters =  menuDao.findByCategory(MenuCategory.STARTER.getIdCategory());
-		request.getSession().setAttribute("starters",starters );
-		
-		List<MenuBean> sidedish =  menuDao.findByCategory(MenuCategory.SIDEDISH.getIdCategory());
-		request.getSession().setAttribute("sidedish",sidedish );
-		
-		List<MenuBean> maincourse =  menuDao.findByCategory(MenuCategory.MAINCOURSE.getIdCategory());
-		request.getSession().setAttribute("maincourse",maincourse );
-	
-		List<MenuBean> dessert =  menuDao.findByCategory(MenuCategory.DESSERT.getIdCategory());
-		request.getSession().setAttribute("dessert",dessert );
-	
-		List<MenuBean> drink =  menuDao.findByCategory(MenuCategory.DRINKS.getIdCategory());
-		request.getSession().setAttribute("drink",drink );
-	
+		OrdersDAO item = new OrdersDAO();// retrieve data from database
+		List<OrderBean> vieworders = item.retrieveOrderAssigned("delivery");
+		request.getSession().setAttribute("vieworders",vieworders );
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/order.jsp");
+		response.sendRedirect(contextPath+"/pages/vieworderassigned.jsp");
+		
 	}
 
 	/**

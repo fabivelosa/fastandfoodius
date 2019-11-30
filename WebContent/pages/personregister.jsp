@@ -95,7 +95,7 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="inputPassword4">Repeat Password</label> <input
-					type="text" class="form-control" id="inputRepeat"
+					type="password" class="form-control" id="inputRepeat"
 					name="inputRepeat" placeholder=" Please repeat password">
 
 			</div>

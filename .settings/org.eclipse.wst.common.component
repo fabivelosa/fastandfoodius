@@ -2,6 +2,8 @@
     <wb-module deploy-name="fastandfoodius">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="fastandfoodius"/>
         <property name="java-output-path" value="/fastandfoodius/build/classes"/>
     </wb-module>
