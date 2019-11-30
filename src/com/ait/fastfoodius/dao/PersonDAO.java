@@ -70,6 +70,27 @@ public class PersonDAO {
 		}
 		return null;
 	}
+	
+	
+	public PersonBean findByUser(String user) {
+	
+		PersonBean pers = null;
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE emailAddress = ?");
+			stm.setString(1, user );
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				pers = extract(rs);
+			}
+			
+			return pers;
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+			return pers;
+	}
 
 	public boolean insertPerson(PersonBean person) {
 		try {
@@ -91,7 +112,6 @@ public class PersonDAO {
 			stm.setString(8, person.getCity());
 			stm.setString(9, person.getPostalCode());
 			stm.setString(10, person.getEmail());
-			System.out.println(stm.toString());
 			stm.executeUpdate();
 			return true;
 		} catch (SQLException | ClassNotFoundException e) {

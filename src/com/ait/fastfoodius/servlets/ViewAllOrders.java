@@ -15,14 +15,14 @@ import com.ait.fastfoodius.dao.OrdersDAO;
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/vieworders")
-public class ViewOrdersAssigned extends HttpServlet {
+@WebServlet("/viewallorders")
+public class ViewAllOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewOrdersAssigned() {
+    public ViewAllOrders() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,14 @@ public class ViewOrdersAssigned extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		OrdersDAO item = new OrdersDAO();// retrieve data from database
-		List<OrderBean> vieworders = item.retrieveOrderAssigned("delivery");
-		request.getSession().setAttribute("vieworders",vieworders );
-		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/vieworderassigned.jsp");
 		
+		
+		OrdersDAO item = new OrdersDAO();// retrieve data from database
+		List<OrderBean> viewallorders = item.retrieveAllOrders();
+		request.getSession().setAttribute("viewallorders",viewallorders );
+		
+		String contextPath = request.getContextPath();
+		response.sendRedirect(contextPath+"/pages/viewallorders.jsp");
 	}
 
 	/**

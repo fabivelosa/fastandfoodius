@@ -65,12 +65,13 @@ CREATE TABLE menu (
 /*Table structure for table orders */      
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
-    order_ID INTEGER NOT NULL,
+    order_ID INTEGER auto_increment NOT NULL,
     customer_ID INTEGER NOT NULL,
+    orderChannel VARCHAR(20) NOT NULL,
     orderAddress VARCHAR(30) NOT NULL,
     orderCity VARCHAR(30) NOT NULL,
     orderPostalCode VARCHAR(30) NOT NULL,
-    orderEmailAdress VARCHAR(30) NOT NULL,
+    orderEmailAddress VARCHAR(30) NOT NULL,
     orderPhoneNumber VARCHAR(20) NOT NULL,
     orderDate DATE,
     paymentStatus VARCHAR(20) NOT NULL,
@@ -91,13 +92,13 @@ CREATE TABLE orderdetail (
     order_ID INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
-    orderChannel VARCHAR(20) NOT NULL,
     FOREIGN KEY (item_id)
         REFERENCES menu (item_id),
     FOREIGN KEY (order_ID)
         REFERENCES orders (order_ID)
 );
 
+ALTER TABLE ORDERS AUTO_INCREMENT = 10260;
       
 
 

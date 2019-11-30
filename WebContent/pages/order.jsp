@@ -232,7 +232,7 @@
 								  </c:forEach>
 							  </tbody>
 						  </table>
-						 	<form id="order-form" action="${pageContext.request.contextPath}/addOrder"
+						 	<form id="order-form" action="${pageContext.request.contextPath}/checkOutOrder"
 						method="post"> 
 							<div class="text-center">
 							<button type="submit" class="btn btn-primary">check Out Order</button>
@@ -240,7 +240,7 @@
 		 			</form> 
 				</div>
 		</div>
-
+	</div>
 
 	<%@include file="../includes/footer.jsp"%>
 </body>

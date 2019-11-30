@@ -9,17 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.OrderBean;
-import com.ait.fastfoodius.bean.OrderItemBean;
-import com.ait.fastfoodius.bean.PersonBean;
-import com.ait.fastfoodius.dao.OrderItemDAO;
-import com.ait.fastfoodius.dao.OrdersDAO;
-import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
  * Servlet implementation class Customer
  */
-@WebServlet("/saveOrder")
-public class Order extends HttpServlet {
+@WebServlet("/checkOutOrder")
+public class CheckOutOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -33,27 +28,8 @@ public class Order extends HttpServlet {
 		
 		OrderBean ordem = (OrderBean) request.getSession().getAttribute("order");
 		
-		OrdersDAO orderDao = new OrdersDAO();
-		OrderItemDAO ordermItemDao = new OrderItemDAO();
-		PersonDAO personDAO = new PersonDAO();
-		
-		orderDao.insertOrder(ordem);
-		
-		String user = (String) request.getSession(false).getAttribute("user");
-		
-		PersonBean person = personDAO.findByUser(user);
-		
-		
-		int ordemMax = orderDao.retrieveLastOrder(person.getId());
-		
-		for(OrderItemBean item : ordem.getOrderItem()) {
-			item.setOrder_ID(ordemMax);
-			ordermItemDao.insertOrderItem(item);	
-		}
-		
-		ordem.setOrder_ID(ordemMax);
-		request.setAttribute("orderId",ordem.getOrder_ID());
-		request.getRequestDispatcher("/pages/orderSuccess.jsp").forward(request, response);
+		System.out.println(ordem.getOrderItem().size());
+		request.getRequestDispatcher("/pages/orderCheckout.jsp").forward(request, response);
 	}
 	
 	/**

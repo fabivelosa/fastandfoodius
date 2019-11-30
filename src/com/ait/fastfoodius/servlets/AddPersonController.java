@@ -83,7 +83,7 @@ public class AddPersonController extends HttpServlet {
 
 		if (n) {
 			LoginDAO daoL = new LoginDAO();
-			daoL.addLogin(email, password, 2);
+			daoL.addLogin(email, password, 2); 
 		}
 
 		String contextPath = request.getContextPath();

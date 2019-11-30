@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.ait.fastfoodius.bean.MenuBean;
 import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.bean.OrderItemBean;
+import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.MenuDAO;
+import com.ait.fastfoodius.dao.PersonDAO;
 import com.ait.fastfoodius.resource.deliveryStatus;
 
 /**
@@ -35,12 +37,24 @@ public class OrderAddItem extends HttpServlet {
 		String id = request.getParameter("itemId");
 
 		OrderBean order = (OrderBean) request.getSession().getAttribute("order");
-
+		PersonDAO personDAO = new PersonDAO();
+		
 		if (order == null) {
 			order = new OrderBean();
-			order.setOrderDate(new Date());
-			order.setDeliveryStatus(deliveryStatus.PENDING.toString());
+			String user = (String) request.getSession(false).getAttribute("user");
 			
+			PersonBean person = personDAO.findByUser(user);
+			order.setCustomer_ID(person.getId()); 
+			order.setDeliveryStatus(deliveryStatus.PENDING.toString());
+			order.setOrderAddress(person.getAddress());
+			order.setOrderCity(person.getCity());
+			order.setOrderDate(new Date());
+			order.setOrderEmailAddress(person.getEmail());
+			order.setOrderPhoneNumber(person.getPhone());
+			order.setOrderPostalCode(person.getPostalCode());
+			order.setPaymentStatus("PAY_ON_DELIVERY");
+			order.setRequiredDeliveryDate(new Date());
+			order.setOrderChannel("ONLINE");
 			
 			List<OrderItemBean> ordemItemList = new ArrayList<OrderItemBean>();
 			order.setOrderItem(ordemItemList);
@@ -50,13 +64,14 @@ public class OrderAddItem extends HttpServlet {
 
 		OrderItemBean item = new OrderItemBean();
 		item.setMenu_ID(menuitem.getItemId());
-		item.setOrderChannel("chanel");
+		item.setMenuDesc(menuitem.getItemDescr());
+		item.setPrice(menuitem.getPrice());
 		item.setQuantity(1);
 		order.getOrderItem().add(item);
-		
-		request.getSession().setAttribute("order",order);
-		
-		System.out.println(order.getOrderItem().size());
+
+		request.getSession().setAttribute("order", order);
+
+
 		response.getWriter().write("");
 	}
 }

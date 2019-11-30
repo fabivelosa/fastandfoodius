@@ -41,53 +41,12 @@
 
 
 				<div class="container">
-			
-				
 						<br> <br> <br> <br>
 						<br>
 						<div>
-							<h1 align="center" >Order</h1>
+							<h1 align="center" >Your order number is ${orderId}.</h1>
 						</div>
-						 <table class="table table-striped">
-						 <thead>
-							<tr>
-								<th>Id Item</th>
-								<th>Description</th>
-								<th>Quantity</th>
-								<th>Price</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-						<c:set var="total" value="${0}"/>
-							  <c:forEach var="menu" items="${order.orderItem}">
-								  <tr>
-								  	  <td>${menu.menu_ID}</td>
-								  	  <td>${menu.menuDesc}</td>
-								  	  <td>${menu.quantity}</td>
-								  	  <td>${menu.price}</td>
-								  </tr>
-								 <c:set var="total" value="${total + menu.price}" />
-								  
-							</c:forEach>
-								  
-								  <tr>
-									 <td>TOTAL</td>
-								  	 <td></td>
-								  	 <td></td>
-								  	  <td>${total}</td>
-								</tr>
-							  </tbody>
-						  </table>
-						 	<form id="order-form" action="${pageContext.request.contextPath}/saveOrder"
-						method="post"> 
-							<div class="text-center">
-							<button type="submit" class="btn btn-primary">Confirm</button>
-						</div>
-		 			</form> 
-		
 		</div>
-
 
 	<%@include file="../includes/footer.jsp"%>
 </body>
