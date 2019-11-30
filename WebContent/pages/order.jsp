@@ -115,12 +115,11 @@
 								  	<td>${menu.itemId}</td>
 								  	 <td>${menu.itemDescr}</td>
 								  	  <td>${menu.price}</td>
-								  	  <td>
-								  	  	<button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
+								  	  <td> <button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
 								  	  			<i class="fa fa-cart-plus"></i>
-								  	 	</button> 
+								  	 	</button></td>
 								  </tr>
-										  </c:forEach>
+							  </c:forEach>
 							  </tbody>
 						  </table>
 						 <div>
