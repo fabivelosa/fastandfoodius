@@ -56,7 +56,7 @@
 								<td><a class="btn btn-primary"
 									href="${pageContext.request.contextPath}/deleteItem?id=${item.itemId}">
 										<i Delete class="fa fa-trash"></i>
-								</a>
+								</a></td>
 							</tr>
 						</c:forEach>
 

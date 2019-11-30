@@ -14,6 +14,7 @@ import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrderItemDAO;
 import com.ait.fastfoodius.dao.OrdersDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
+import com.ait.fastfoodius.resource.Role;
 
 /**
  * Servlet implementation class Customer
@@ -38,8 +39,13 @@ public class Order extends HttpServlet {
 		PersonDAO personDAO = new PersonDAO();
 		
 		orderDao.insertOrder(ordem);
-		
-		String user = (String) request.getSession(false).getAttribute("user");
+		String role = request.getSession().getAttribute("role").toString();
+		String user = null;
+		if (Integer.parseInt(role)==Role.FRONTDESK.getIdRole()) {
+			user = ((PersonBean) request.getSession(false).getAttribute("customer")).getEmail() ;
+		} else {
+			 user = (String) request.getSession(false).getAttribute("user");
+		}
 		
 		PersonBean person = personDAO.findByUser(user);
 		

@@ -44,7 +44,7 @@
 						<br> <br> <br> <br>
 						<br>
 						<div>
-							<h1 align="center" >Your order number is ${orderId}.</h1>
+							<h1 align="center" >Your Order: ${orderId}.</h1>
 						</div>
 		</div>
 

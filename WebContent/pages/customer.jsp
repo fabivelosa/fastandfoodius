@@ -42,20 +42,21 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="customer" items="${cutomer}">
+						<c:forEach var="customer" items="${customerList}">
 							<tr>
-								<td>${customer.customer_ID}</td>
+								<td>${customer.id}</td>
 								<td>${customer.firstName}</td>
 								<td>${customer.gender}</td>
 								<td>${customer.dateofbirth}</td>
-								<td>${customer.orderAddress}</td>
-								<td>${customer.orderCity}</td>
-								<td>${customer.orderPostalCode}</td>
-								<td>${customer.orderEmailAddress}</td>
-								<td>${customer.orderPhoneNumber}</td>
-								<td><button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
-								  	<i class="fa fa-cart-plus"></i>
-								</button></td>
+								<td>${customer.address}</td>
+								<td>${customer.city}</td>
+								<td>${customer.postalCode}</td>
+								<td>${customer.email}</td>
+								<td>${customer.phone}</td>
+								<td> <a class="btn btn-primary"
+									href="${pageContext.request.contextPath}/menu?id=${customer.id}">
+										<i class="fa fa-plus-square"></i>
+								</a></td>
 							</tr>
 						</c:forEach>
 

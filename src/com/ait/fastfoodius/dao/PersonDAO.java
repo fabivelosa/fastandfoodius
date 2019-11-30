@@ -32,6 +32,24 @@ public class PersonDAO {
 		}
 		return null;
 	}
+	
+	public List<PersonBean> findAllCustomers() {
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person where title = 'customer';");
+			List<PersonBean> person = new ArrayList<PersonBean>();
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				PersonBean pers = extract(rs);
+				person.add(pers);
+			}
+			return person;
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public PersonBean findById(int id) {
 		try {

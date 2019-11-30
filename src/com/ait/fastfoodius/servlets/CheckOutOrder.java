@@ -28,7 +28,6 @@ public class CheckOutOrder extends HttpServlet {
 		
 		OrderBean ordem = (OrderBean) request.getSession().getAttribute("order");
 		
-		System.out.println(ordem.getOrderItem().size());
 		request.getRequestDispatcher("/pages/orderCheckout.jsp").forward(request, response);
 	}
 	

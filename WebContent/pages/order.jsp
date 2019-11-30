@@ -95,7 +95,11 @@
 						<br> <br> <br> <br>
 						<br>
 						<div>
-							<h1>Order</h1>
+							<h1>Order </h1>   
+							<c:if test="${customer != null}">
+                                   <h1>  Customer: ${customer.firstName}</h1>
+                           </c:if>  
+							
 						</div>
 						<div>
 							<h1 align="center" >Starters</h1>
@@ -224,7 +228,7 @@
 								  	  <td>${menu.price}</td>
 								  	  <td>
 								  	  	<button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
-								  	  			<i class="fa fa-cart-plus"></i>
+								  	  			<i class="fa fa-shopping-cart"></i>
 								  	 	</button> 
 								  	  </td>
 								  </tr>
@@ -234,7 +238,7 @@
 						 	<form id="order-form" action="${pageContext.request.contextPath}/checkOutOrder"
 						method="post"> 
 							<div class="text-center">
-							<button type="submit" class="btn btn-primary">check Out Order</button>
+							<button type="submit" class="btn btn-primary">Check Out Order</button>
 						</div>
 		 			</form> 
 				</div>

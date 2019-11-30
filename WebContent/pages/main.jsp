@@ -38,7 +38,7 @@
 									href="${pageContext.request.contextPath}/viewcustomerorder">Track my order</a>
                            </c:if>  
                            <c:if test="${roleId == 3}">
-                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+                                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/addItem">Edit Menu Items</a>
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/pages/categories.jsp">Add Menu Category</a>

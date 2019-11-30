@@ -45,8 +45,32 @@
 
 <body id="page-top">
 
-	<!-- Navigation -->
-	<%@include file="/includes/navbar_menu.jsp"%>
+	
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="${pageContext.request.contextPath}">Fast
+				and Foodius</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars"></i>
+			</button>
+			<div class=" " id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ml-auto">
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#services" href="#services">Services</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#about"    href="#about">About</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#team"     href="#team">Team</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#contact"  href="#contact">Contact</a></li>
+					<% if (session.getAttribute("logged") == Boolean.TRUE) { %>
+				     <li class="nav-item"><a class="nav-link js-scroll-trigger"  id="#logout" href="${pageContext.request.contextPath}/LogOut " target="" >Logout</a></li>
+					<% } else {%>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#login"  href="${pageContext.request.contextPath}/pages/login.jsp"    target="">Login</a></li>
+						 <% } %>
+				</ul>	       
+			</div>
+		</div>
+	</nav>
 
 	<!-- Header -->
 	<header class="masthead">
@@ -230,16 +254,34 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor
-						sit amet consectetur.</h3>
+					<h3 class="section-subheading text-muted">"Individual commitment to a group effort, that is what makes a team work, a company work, 
+					a society work, a civilization work." --Vince Lombardi </h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-						<h4>Kay Garland</h4>
-						<p class="text-muted">Lead Designer</p>
+						<h4>Fabi Velosa</h4>
+						<p class="text-muted">Back-end Developer</p>
+						<ul class="list-inline social-buttons">
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-twitter"></i>
+							</a></li>
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-facebook-f"></i>
+							</a></li>
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-linkedin-in"></i>
+							</a></li>
+						</ul>
+					</div>
+				</div>			
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+						<h4>Joyce Martins</h4>
+						<p class="text-muted">Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -256,8 +298,8 @@
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-						<h4>Larry Parker</h4>
-						<p class="text-muted">Lead Marketer</p>
+						<h4>Obinna Nnadi</h4>
+						<p class="text-muted">Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -273,9 +315,9 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-						<h4>Diana Pertersen</h4>
-						<p class="text-muted">Lead Developer</p>
+						<img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
+						<h4>Oladejo David</h4>
+						<p class="text-muted">Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -292,9 +334,9 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8 mx-auto text-center">
-					<p class="large text-muted">Lorem ipsum dolor sit amet,
-						consectetur adipisicing elit. Aut eaque, laboriosam veritatis,
-						quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+					<p class="large text-muted"> <i><b>Sean, Mary, Connor, and Martina: </b>  <br>
+					Thank you for imparting knowledge the best you could. <br> Saying thank you cannot cover 
+					for all you have imputed in us but we'll say it nonetheless.</i></p>
 				</div>
 			</div>
 		</div>

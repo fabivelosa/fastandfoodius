@@ -1,28 +1,23 @@
 package com.ait.fastfoodius.servlets;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ait.fastfoodius.bean.PersonBean;
-import com.ait.fastfoodius.dao.PersonDAO;
-
 /**
- * Servlet implementation class Menu
+ * Servlet implementation class LogOut
  */
-@WebServlet("/customer")
-public class Customer extends HttpServlet {
+@WebServlet("/LogOut")
+public class LogOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Customer() {
+    public LogOut() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +26,10 @@ public class Customer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		PersonDAO personDao = new PersonDAO();
-		List<PersonBean> customer =  personDao.findAllCustomers();
-		request.getSession().setAttribute("customerList",customer);
-		
-		String contextPath = request.getContextPath();
-	    request.getRequestDispatcher("/pages/customer.jsp").forward(request, response);		
+		// TODO Auto-generated method stub
+		 request.getSession().invalidate();  
+		 String contextPath = request.getContextPath();
+		 response.sendRedirect(contextPath+"/index.jsp");
 	}
 
 	/**
