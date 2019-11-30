@@ -198,15 +198,12 @@ public class OrdersDAO {
 		ResultSet rs = null;
 		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber "
 				+ "from orders where deliveryStatus = ? and deliveredBy = ? ;";
+
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
 			stmtp.setString(1, deliveryStatus.ASSIGNED.toString());
 			stmtp.setString(2, deliveredBy);
-			System.out.println("assigned: " + deliveryStatus.ASSIGNED.toString());
-			System.out.println("deliveredBy: " + deliveredBy);
-			System.out.println("before: " + cmd.toString());
-
 			rs = stmtp.executeQuery();
 
 			while (rs.next()) {
@@ -219,11 +216,9 @@ public class OrdersDAO {
 				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
 				orderlist.add(order);
 			}
-			stmtp.close();
-			rs.close();
-			con.close();
+			
 
-			return orderlist;
+			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -243,5 +238,9 @@ public class OrdersDAO {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		
 	}
+
+	
+	
 }

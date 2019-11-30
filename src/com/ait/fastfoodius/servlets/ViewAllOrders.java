@@ -39,7 +39,9 @@ public class ViewAllOrders extends HttpServlet {
 		request.getSession().setAttribute("viewallorders",viewallorders );
 		
 		String contextPath = request.getContextPath();
+
 		response.sendRedirect(contextPath+"/pages/viewallorders.jsp");
+
 	}
 
 	/**
