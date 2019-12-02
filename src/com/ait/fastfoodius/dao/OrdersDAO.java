@@ -19,8 +19,8 @@ public class OrdersDAO {
 
 	public void insertOrder(OrderBean order) {
 		PreparedStatement stmtp = null;
-		String cmd = "insert into orders (customer_ID,orderAddress,orderCity,orderPostalCode,orderEmailAddress"
-				+ ", orderPhoneNumber,orderDate,paymentStatus,deliveryStatus,requiredDeliveryDate,orderchannel)"
+		String cmd = "insert into orders (customer_ID,orderAddress,orderCity,orderPostalCode,orderEmailAddress,"
+				+ " orderPhoneNumber,orderDate,paymentStatus,deliveryStatus,requiredDeliveryDate,orderchannel)"
 				+ "values (?,?,?,?,?,?,?,?,?,?,?);";
 		try {
 			con = new DatabaseConnection().connect();
@@ -29,7 +29,7 @@ public class OrdersDAO {
 			stmtp.setString(2, order.getOrderAddress());
 			stmtp.setString(3, order.getOrderCity());
 			stmtp.setString(4, order.getOrderPostalCode());
-			stmtp.setString(5, order.getOrderEmailAddress());
+			stmtp.setString(5, order.getOrderPostalCode());
 			stmtp.setString(6, order.getOrderPhoneNumber());
 			stmtp.setDate(7, new java.sql.Date(order.getOrderDate().getTime()));
 			stmtp.setString(8, order.getPaymentStatus());
@@ -89,7 +89,7 @@ public class OrdersDAO {
 		ResultSet rs = null;
 		String cmd = "select order_ID, customer_ID,  orderAddress, orderCity, orderPostalCode, orderEmailAddress, "
 				+ "orderPhoneNumber,orderDate, paymentStatus, "
-				+ "requiredDeliveryDate,  deliveredBy, deliveryStatus, whenDelivered from orders ;";
+				+ "requiredDeliveryDate,  deliveredBy, deliveryStatus, whenDelivered from orders order by deliveryStatus, orderDate ;";
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
@@ -175,23 +175,6 @@ public class OrdersDAO {
 		}
 	}
 
-	public void retrieveOrder(String deliveryStatus) {
-		PreparedStatement stmtp = null;
-		ResultSet rs = null;
-		String cmd = "select * from orders where deliverystatus = ? ;";
-		try {
-			con = new DatabaseConnection().connect();
-			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, deliveryStatus);
-			rs = stmtp.executeQuery();
-			while (rs.next()) {
-				// fullfill order
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-	}
-
 	public List<OrderBean> retrieveOrderAssigned(String deliveredBy) {
 		PreparedStatement stmtp = null;
 		List<OrderBean> orderlist = new ArrayList<OrderBean>();
@@ -215,9 +198,9 @@ public class OrdersDAO {
 				order.setPaymentStatus(rs.getString("paymentStatus"));
 				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
 				orderlist.add(order);
-			}
-			
+				order.setDeliveryStatus(deliveryStatus.ASSIGNED.toString());
 
+			}
 			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

@@ -47,6 +47,7 @@ public class OrderAddItem extends HttpServlet {
 			
 			if (Integer.parseInt(role)== Role.FRONTDESK.getIdRole()) {
 				user = ((PersonBean) request.getSession(false).getAttribute("customer")).getEmail() ;
+				order.setPaymentStatus("PAY_ON_DELIVERY");
 			} else {
 				 user = (String) request.getSession(false).getAttribute("user");
 			}

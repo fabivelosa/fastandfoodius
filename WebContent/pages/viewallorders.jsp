@@ -36,11 +36,7 @@
 						<tr>
 							<th>Order ID</th>
 							<th>Customer ID</th>
-							<th>Order Address</th>
 							<th>City</th>
-							<th>Postal Code</th>
-							<th>Email Address</th>
-							<th>Phone Number</th>
 							<th>Order Date</th>
 							<th>Required Delivery Date</th>
 							<th>Payment Status</th>
@@ -54,11 +50,7 @@
 							<tr>
 								<td>${order.order_ID}</td>
 								<td>${order.customer_ID}</td>
-								<td>${order.orderAddress}</td>
 								<td>${order.orderCity}</td>
-								<td>${order.orderPostalCode}</td>
-								<td>${order.orderEmailAddress}</td>
-								<td>${order.orderPhoneNumber}</td>
 								<td>${order.orderDate}</td>
 								<td>${order.requiredDeliveryDate}</td>
 								<td>${order.paymentStatus}</td>

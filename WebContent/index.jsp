@@ -334,7 +334,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8 mx-auto text-center">
-					<p class="large text-muted"> <i><b>Sean, Mary, Connor, and Martina: </b>  <br>
+					<p class="large text-muted"> <i><b>Sean Kennedy, Mary Giblin, Conor Keighrey, Jackie Stewart,  and Martina Curran: </b>  <br>
 					Thank you for imparting knowledge the best you could. <br> Saying thank you cannot cover 
 					for all you have imputed in us but we'll say it nonetheless.</i></p>
 				</div>
@@ -426,35 +426,6 @@
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-4">
-					<span class="copyright">Copyright &copy; Your Website 2019</span>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-inline social-buttons">
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-twitter"></i>
-						</a></li>
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-facebook-f"></i>
-						</a></li>
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-linkedin-in"></i>
-						</a></li>
-					</ul>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-inline quicklinks">
-						<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-						<li class="list-inline-item"><a href="#">Terms of Use</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
 
 	<!-- Portfolio Modals -->
 
@@ -473,7 +444,7 @@
 						<div class="col-lg-8 mx-auto">
 							<div class="modal-body">
 								<!-- Project Details Go Here -->
-								<h2 class="text-uppercase">Project Name</h2>
+								<h2 class="text-uppercase">Fast and Foodius</h2>
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"

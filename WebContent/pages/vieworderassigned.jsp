@@ -38,6 +38,7 @@
 							<th>Order Address</th>
 							<th>City</th>
 							<th>Required Delivery Date</th>
+							<th>Delivery Status</th>
 							<th>Payment Status</th>
 							<th>Phone</th>
 						</tr>
@@ -49,9 +50,12 @@
 								<td>${order.orderAddress}</td>
 								<td>${order.orderCity}</td>
 								<td>${order.requiredDeliveryDate}</td>
+								<td>${order.deliveryStatus}</td>
 								<td>${order.paymentStatus}</td>
 								<td>${order.orderPhoneNumber}</td>
-								
+								<td><button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
+							  	  			<i class="fa fa-motorcycle"></i>
+							  	 	</button></td>
 							</tr>
 						</c:forEach>
 
