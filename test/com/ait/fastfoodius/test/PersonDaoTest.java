@@ -39,7 +39,6 @@ class PersonDaoTest {
 	void testInsertAndDelete() {
 
 		PersonBean person = new PersonBean();
-		person.setId(23);
 		person.setFirstName("John");
 		person.setLastName("Travolta");
 		person.setDateofbirth(new Date());
@@ -51,7 +50,7 @@ class PersonDaoTest {
 		person.setEmail("j.trav@gmail.com");
 		person.setPhone("089 024 2514");
 		boolean insert = dao.insertPerson(person);
-		PersonBean personFound = dao.findById(23);
+		PersonBean personFound = dao.findByUser("j.trav@gmail.com");
 		assertEquals("John", personFound.getFirstName());
 		// testFindAll
 		List<PersonBean> list = dao.findAll();
@@ -63,8 +62,8 @@ class PersonDaoTest {
 		person = dao.findById(23);
 		assertEquals("John", personFound.getFirstName());
 		// testDelete
-		//boolean delete = dao.deletePersonById(23);
-		//assertTrue(delete);
+		boolean delete = dao.deletePersonById(personFound.getId());
+		assertTrue(delete);
 
 	}
 

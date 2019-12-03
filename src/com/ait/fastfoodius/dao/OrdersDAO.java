@@ -26,7 +26,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setInt(1, order.getCustomer_ID());
+			stmtp.setInt(1, order.getCustomer_ID()); 
 			stmtp.setString(2, order.getOrderAddress());
 			stmtp.setString(3, order.getOrderCity());
 			stmtp.setString(4, order.getOrderPostalCode());
@@ -222,7 +222,6 @@ public class OrdersDAO {
 				order.setDeliveryStatus(deliveryStatus.ASSIGNED.toString());
 
 			}
-		System.out.println(stmtp.toString());	
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -244,9 +243,57 @@ public class OrdersDAO {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 	}
 
-	
-	
+	public List<OrderBean> retrieveOrderforDelivery() {
+		PreparedStatement stmtp = null;
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber, deliveryStatus "
+				+ "from orders where deliveryStatus = ? ;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.PENDING.toString());
+			rs = stmtp.executeQuery();
+
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				orderlist.add(order);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return orderlist;
+	}
+
+	public void updateAssignedDriver(int orderId, String driverEmail) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveredby = ?, deliveryStatus = ? where order_id = ?;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, driverEmail);
+			stmtp.setString(2, "Assigned");
+			stmtp.setInt(3, orderId);
+			stmtp.executeUpdate();
+			System.out.println(stmtp.toString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println(stmtp.toString());
+		}
+
+	}
+
 }

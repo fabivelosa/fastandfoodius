@@ -34,6 +34,7 @@ public class DatabaseConnection {
     public Connection connect() throws ClassNotFoundException {
         if (connection == null) {
             try {
+            	DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
                 connection = DriverManager.getConnection(DATABASE_URL, getProperties());
             } catch (SQLException e) {
                 e.printStackTrace();
