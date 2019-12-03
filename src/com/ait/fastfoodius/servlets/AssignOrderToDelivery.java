@@ -13,6 +13,7 @@ import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrdersDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
+import com.ait.fastfoodius.resource.Role;
 
 /**
  * Servlet implementation class Menu
@@ -44,6 +45,7 @@ public class AssignOrderToDelivery extends HttpServlet {
 		List<PersonBean> assigndelivery = delivery.findByRole("Delivery Driver");
 		request.getSession().setAttribute("assigndelivery", assigndelivery);
 
+
 		String contextPath = request.getContextPath();
 
 		response.sendRedirect(contextPath + "/pages/assignordertodelivery.jsp");
@@ -57,14 +59,16 @@ public class AssignOrderToDelivery extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String personId = request.getParameter("person_id");
+		String personEmail = request.getParameter("person_id");
 		String orderId = request.getParameter("order_id");
 
 		OrdersDAO dao = new OrdersDAO();
-		dao.updateAssignedDriver(Integer.parseInt(orderId), Integer.parseInt(personId));
-
+		dao.updateAssignedDriver(Integer.parseInt(orderId), personEmail);
+		
+	
+		
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/pages/assignordertodelivery.jsp");
+		response.sendRedirect(contextPath + "/viewpendingorders");
 	}
 
 }

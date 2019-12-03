@@ -201,7 +201,7 @@ public class OrdersDAO {
 				order.setDeliveryStatus(deliveryStatus.ASSIGNED.toString());
 
 			}
-			
+
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -221,8 +221,9 @@ public class OrdersDAO {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 	}
+
 	public List<OrderBean> retrieveOrderforDelivery() {
 		PreparedStatement stmtp = null;
 		List<OrderBean> orderlist = new ArrayList<OrderBean>();
@@ -247,17 +248,30 @@ public class OrdersDAO {
 				order.setDeliveryStatus(rs.getString("deliveryStatus"));
 				orderlist.add(order);
 			}
-			
 
-			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return orderlist;
 	}
 
-	public void updateAssignedDriver(int orderId, int driverId) {
-		// update orders set driver = ? where order_id = ?
+	public void updateAssignedDriver(int orderId, String driverEmail) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveredby = ?, deliveryStatus = ? where order_id = ?;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, driverEmail);
+			stmtp.setString(2, "Assigned");
+			stmtp.setInt(3, orderId);
+			stmtp.executeUpdate();
+			System.out.println(stmtp.toString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println(stmtp.toString());
+		}
+
 	}
-	
+
 }

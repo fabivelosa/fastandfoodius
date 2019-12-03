@@ -26,9 +26,6 @@
 		<div>
 			<br> <br> <br> <br> <br>
 			<h1>Assign Order to Delivery</h1>
-			<br> <a class="btn btn-primary"
-				href="${pageContext.request.contextPath}/pages/viewpendingorders.jsp"
-				role="button">Save</a>
 		</div>
 		<br> <br>
 
@@ -68,7 +65,7 @@
 							<td><select name="person_id"
 								class="form-control form-control">
 									<c:forEach var="delivery" items="${assigndelivery}">
-										<option value="${delivery.id}">${delivery.firstName}</option>
+										<option value="${delivery.email}">${delivery.firstName}</option>
 									</c:forEach>
 							</select></td>
 							<td>
