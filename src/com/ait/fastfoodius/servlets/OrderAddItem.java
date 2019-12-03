@@ -53,7 +53,7 @@ public class OrderAddItem extends HttpServlet {
 			}
 			PersonBean person = personDAO.findByUser(user);
 			order.setCustomer_ID(person.getId()); 
-			order.setDeliveryStatus(deliveryStatus.PENDING.toString());
+			order.setDeliveryStatus(deliveryStatus.PENDING.getStatus().toString());
 			order.setOrderAddress(person.getAddress());
 			order.setOrderCity(person.getCity());
 			order.setOrderDate(new Date());

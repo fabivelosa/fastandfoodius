@@ -33,7 +33,9 @@ public class ViewOrdersAssigned extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String login = (String) request.getSession().getAttribute("user");	
 		OrdersDAO item = new OrdersDAO();// retrieve data from database
+		
 		List<OrderBean> vieworders = item.retrieveOrderAssigned(login);
+		
 		request.getSession().setAttribute("vieworders",vieworders );
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath+"/pages/vieworderassigned.jsp");
