@@ -26,7 +26,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setInt(1, order.getCustomer_ID()); 
+			stmtp.setInt(1, order.getCustomer_ID());
 			stmtp.setString(2, order.getOrderAddress());
 			stmtp.setString(3, order.getOrderCity());
 			stmtp.setString(4, order.getOrderPostalCode());
@@ -44,7 +44,7 @@ public class OrdersDAO {
 		}
 	}
 
-	public List<OrderBean>  retrieveOrder(int customerID) {
+	public List<OrderBean> retrieveOrder(int customerID) {
 		PreparedStatement stmtp = null;
 		ResultSet rs = null;
 		List<OrderBean> orderlist = new ArrayList<OrderBean>();
@@ -75,9 +75,9 @@ public class OrdersDAO {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 		return orderlist;
-		
+
 	}
 
 	public int retrieveLastOrder(Integer customerID) {
@@ -227,6 +227,7 @@ public class OrdersDAO {
 		return orderlist;
 	}
 
+
 	public void updateOrderDelivered(String loginDeliverer, int orderId) {
 		PreparedStatement stmtp = null;
 		String cmd = "update orders set deliveryStatus = ?, paymentStatus = ? , deliveredBy = ?, whenDelivered = ? where order_id = ? ;";
@@ -244,6 +245,7 @@ public class OrdersDAO {
 		}
 
 	}
+	
 
 	public List<OrderBean> retrieveOrderforDelivery() {
 		PreparedStatement stmtp = null;
@@ -276,6 +278,36 @@ public class OrdersDAO {
 		return orderlist;
 	}
 
+	public List<OrderBean> retrieveOrderDelivered() {
+		PreparedStatement stmtp = null;
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, deliveryStatus, deliveredBy, whenDelivered "
+				+ "from orders where deliveryStatus = ? ;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.DELIVERED.toString());
+			rs = stmtp.executeQuery();
+
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				order.setDeliveredby(rs.getString("deliveredby"));
+				order.setWhenDelivered(rs.getDate("whenDelivered"));
+				orderlist.add(order);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return orderlist;
+	}
+
+
+
 	public void updateAssignedDriver(int orderId, String driverEmail) {
 		PreparedStatement stmtp = null;
 		String cmd = "update orders set deliveredby = ?, deliveryStatus = ? where order_id = ?;";
@@ -292,7 +324,6 @@ public class OrdersDAO {
 			e1.printStackTrace();
 			System.out.println(stmtp.toString());
 		}
-
 	}
 	
 	
@@ -334,5 +365,6 @@ public class OrdersDAO {
 		}
 
 	}
+
 
 }

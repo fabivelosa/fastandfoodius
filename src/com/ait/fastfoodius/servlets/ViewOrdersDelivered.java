@@ -13,19 +13,18 @@ import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrdersDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
-import com.ait.fastfoodius.resource.Role;
 
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/viewpendingorders")
-public class AssignOrderToDelivery extends HttpServlet {
+@WebServlet("/viewordersdelivered")
+public class ViewOrdersDelivered extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AssignOrderToDelivery() {
+	public ViewOrdersDelivered() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,16 +36,13 @@ public class AssignOrderToDelivery extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String personEmail = request.getParameter("person_id");
-		String orderId = request.getParameter("order_id");
-
-		OrdersDAO dao = new OrdersDAO();
-		dao.updateAssignedDriver(Integer.parseInt(orderId), personEmail);
-		
-	
+		OrdersDAO order = new OrdersDAO();// retrieve data from database
+		List<OrderBean> viewordersdelivered = order.retrieveOrderDelivered();
+		request.getSession().setAttribute("viewordersdelivered", viewordersdelivered);
 		
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/getOrdersToDelivery");
+
+		response.sendRedirect(contextPath + "/pages/viewordersdelivered.jsp");
 
 	}
 
@@ -57,11 +53,7 @@ public class AssignOrderToDelivery extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-
 		doGet(request, response);
-
-
 	}
 
 }

@@ -59,7 +59,7 @@
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/viewallorders">View All Orders</a>
 									<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/viewdeliveries">View Orders Delivered</a>
+									href="${pageContext.request.contextPath}/viewordersdelivered">View Orders Delivered</a>
 									
                            </c:if> 
 					<!--  if to show buttons related the role -->	
