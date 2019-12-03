@@ -86,6 +86,7 @@
 										<form action="${pageContext.request.contextPath}/UpdateOrderOnTheWay" method="post">
 										<input type="hidden" name="order_id" value="${order.order_ID}" />
 										
+										
 											<button type="submit" class="btn btn-primary">
 									  	  			<i class="fa fa-motorcycle"></i>
 									  	 	</button>
@@ -96,6 +97,7 @@
 									  	 <td>
 									  	 <form  action="${pageContext.request.contextPath}/updatedelivered" method="post">
 									  	 <input type="hidden" name="order_id" value="${order.order_ID}" />
+									  	 <input type="hidden" name="paymentStatus" value="${order.paymentStatus}" />
 									 	 		<button type="submit" class="btn btn-primary">
 									  	  			<i class="fa fa-check-square"></i>
 									  		 	</button>

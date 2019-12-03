@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.dao.OrdersDAO;
+import com.ait.fastfoodius.resource.paymentStatus;
 
 /**
  * Servlet implementation class Customer
@@ -28,8 +29,17 @@ public class UpdateDelivered extends HttpServlet {
 		OrdersDAO order = new OrdersDAO();// retrieve data from database
 
 		String order_id = request.getParameter("order_id");
+		
+		String paymentStatusVar = request.getParameter("paymentStatus");
 
-		order.updateOrderDelivered(Integer.parseInt(order_id),new Date());
+		
+		if(paymentStatusVar.equals(paymentStatus.PAID_FRONT_DESK.toString())){
+			paymentStatusVar = paymentStatus.PAID_FRONT_DESK.toString();
+		}else {
+			paymentStatusVar = paymentStatus.PAID_ON_DELIVERY.toString();
+		}
+
+		order.updateOrderDelivered(Integer.parseInt(order_id),new Date(),paymentStatusVar);
 		
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath + "/vieworders");

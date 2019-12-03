@@ -346,7 +346,7 @@ public class OrdersDAO {
 	}
 	
 	
-	public void updateOrderDelivered(int orderId,java.util.Date date) {
+	public void updateOrderDelivered(int orderId,java.util.Date date,String payment) {
 		PreparedStatement stmtp = null;
 		String cmd = "update orders set deliveryStatus = ?, whenDelivered = ?, paymentStatus = ?  where order_id = ?;";
 
@@ -355,7 +355,7 @@ public class OrdersDAO {
 			stmtp = con.prepareStatement(cmd);
 			stmtp.setString(1, deliveryStatus.DELIVERED.getStatus().toString());
 			stmtp.setDate(2, new java.sql.Date(date.getTime()));
-			stmtp.setString(3, paymentStatus.PAID_ON_DELIVERY.toString());
+			stmtp.setString(3, payment);
 			stmtp.setInt(4, orderId);
 			stmtp.executeUpdate();
 			System.out.println(stmtp.toString());
