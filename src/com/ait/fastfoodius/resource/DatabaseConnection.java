@@ -7,11 +7,11 @@ import java.util.Properties;
 
 public class DatabaseConnection {
     // init database constants
- //   private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaturant?useSSL=false";
+ //   private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaurant?useSSL=false";
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaurant?useSSL=false&allowPublicKeyRetrieval=true";
 
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "admin123";
+    private static final String PASSWORD = "admin";
     private static final String MAX_POOL = "40";
 
     // init connection object

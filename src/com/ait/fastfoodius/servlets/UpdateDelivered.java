@@ -14,7 +14,7 @@ import com.ait.fastfoodius.dao.OrdersDAO;
  * Servlet implementation class Customer
  */
 @WebServlet("/updatedelivered")
-public class OrderDelivered extends HttpServlet {
+public class UpdateDelivered extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
