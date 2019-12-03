@@ -223,7 +223,41 @@ public class OrdersDAO {
 		}
 		
 	}
+	public List<OrderBean> retrieveOrderforDelivery() {
+		PreparedStatement stmtp = null;
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber, deliveryStatus "
+				+ "from orders where deliveryStatus = ? ;";
 
-	
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.PENDING.toString());
+			rs = stmtp.executeQuery();
+
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				orderlist.add(order);
+			}
+			
+
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return orderlist;
+	}
+
+	public void updateAssignedDriver(int orderId, int driverId) {
+		// update orders set driver = ? where order_id = ?
+	}
 	
 }
