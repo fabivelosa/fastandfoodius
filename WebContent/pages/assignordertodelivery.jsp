@@ -72,6 +72,7 @@
 								<button type="submit" class="btn btn-primary">
 									<i class="fas fa-motorcycle"></i>
 								</button>
+							
 							</td>
 						</tr>
 
@@ -84,6 +85,7 @@
 			</tbody>
 
 		</table>
+			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 	</div>
 
 

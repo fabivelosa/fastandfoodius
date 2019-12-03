@@ -239,8 +239,10 @@
 						method="post"> 
 							<div class="text-center">
 							<button type="submit" class="btn btn-primary">Check Out Order</button>
+							 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 						</div>
 		 			</form> 
+		 			
 				</div>
 		</div>
 	</div>

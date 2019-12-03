@@ -23,7 +23,7 @@ function highlight_menu(name,color) {
 			</button>
 			<div class=" " id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"  href="#">Options</a>
+				
 						
 					
 					

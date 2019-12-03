@@ -41,8 +41,6 @@
                                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/addItem">Edit Menu Items</a>
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/pages/categories.jsp">Add Menu Category</a>
-								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/customer">Start a Customer Order</a>
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/getOrdersToDelivery">Assign Order for Delivery</a>	

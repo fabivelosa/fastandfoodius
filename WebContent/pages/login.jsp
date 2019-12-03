@@ -58,6 +58,7 @@
 							   href="${pageContext.request.contextPath}/pages/forgotpassword.jsp">Forgot Password</a>
 							<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 							   href="${pageContext.request.contextPath}/pages/signup.jsp">Sign-up</a>
+							
 							</div>
 						</div>
 					</form>

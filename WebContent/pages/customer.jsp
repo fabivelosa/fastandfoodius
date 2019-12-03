@@ -56,12 +56,15 @@
 								<td> <a class="btn btn-primary"
 									href="${pageContext.request.contextPath}/menu?id=${customer.id}">
 										<i class="fa fa-plus-square"></i>
-								</a></td>
+								</a>
+								 
+								</td>
 							</tr>
 						</c:forEach>
 
 					</tbody>
 				</table>
+				<a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 			</div>
 
 		</form>

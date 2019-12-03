@@ -99,6 +99,7 @@
 									 	 		<button type="submit" class="btn btn-primary">
 									  	  			<i class="fa fa-check-square"></i>
 									  		 	</button>
+									  		 
 									  	</form> 
 									  	</td> 	
 									  </c:if>  
@@ -108,6 +109,7 @@
 					
 					</tbody>
 				</table>
+				 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 			</div>
 
 		

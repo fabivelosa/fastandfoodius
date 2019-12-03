@@ -10,7 +10,7 @@ public enum deliveryStatus {
     private final String status;
 	
 	
-	deliveryStatus(String  status) {
+	deliveryStatus(String  status) { 
         this.status = status;
     }
     
