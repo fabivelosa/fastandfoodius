@@ -43,7 +43,7 @@
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 									href="${pageContext.request.contextPath}/customer">Start a Customer Order</a>
 								<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}/getOrdersToDelivery">Assign Order for Delivery</a>	
+									href="${pageContext.request.contextPath}/viewpendingorders">Assign Order for Delivery</a>	
                            </c:if>   
                            <c:if test="${roleId == 4}">
                                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
