@@ -22,11 +22,11 @@
 
 	<div class="container">
 
-		<form action="${pageContext.request.contextPath}/viewallorders"
+		<form action="${pageContext.request.contextPath}/trackorder"
 			method="post">
 			<div>
 				<br> <br> <br> <br> <br>
-				<h1>View All Orders</h1>
+				<h1>View My Orders</h1>
 				<br>
 				
 				<br>
@@ -46,7 +46,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="order" items="${viewallorders}">
+						<c:forEach var="order" items="${trackorder}">
 							<tr>
 								<td>${order.order_ID}</td>
 								<td>${order.customer_ID}</td>

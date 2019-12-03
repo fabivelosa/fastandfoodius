@@ -33,6 +33,24 @@ public class PersonDAO {
 		return null;
 	}
 
+	public List<PersonBean> findAllCustomers() {
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person where title = 'customer';");
+			List<PersonBean> person = new ArrayList<PersonBean>();
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				PersonBean pers = extract(rs);
+				person.add(pers);
+			}
+			return person;
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public PersonBean findById(int id) {
 		try {
 			con = new DatabaseConnection().connect();
@@ -70,26 +88,45 @@ public class PersonDAO {
 		}
 		return null;
 	}
-	
-	
+
 	public PersonBean findByUser(String user) {
-	
+
 		PersonBean pers = null;
 		try {
 
 			con = new DatabaseConnection().connect();
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE emailAddress = ?");
-			stm.setString(1, user );
+			stm.setString(1, user);
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
 				pers = extract(rs);
 			}
-			
+
 			return pers;
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-			return pers;
+		return pers;
+	}
+
+	public List<PersonBean> findByRole(String role) {
+		try {
+
+			con = new DatabaseConnection().connect();
+			PreparedStatement stm = con.prepareStatement("SELECT * FROM person WHERE title = ?");
+			stm.setString(1, role);
+			List<PersonBean> delivery = new ArrayList<PersonBean>();
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				PersonBean pers = extract(rs);
+				delivery.add(pers);
+			}
+			return delivery;
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 
 	public boolean insertPerson(PersonBean person) {

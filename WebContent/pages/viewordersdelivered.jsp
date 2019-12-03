@@ -22,48 +22,41 @@
 
 	<div class="container">
 
-		<form action="${pageContext.request.contextPath}/viewItem"
+		<form action="${pageContext.request.contextPath}/viewordersdelivered"
 			method="post">
 			<div>
 				<br> <br> <br> <br> <br>
-				<h1>View Items</h1>
-				<br>
-				<div class="text-align-right">
-
-					<a class="btn btn-primary"
-						href="${pageContext.request.contextPath}/pages/menu.jsp"
-						role="button">Add Item</a>
-				</div>
-				<br>
+				<h1>View Orders Delivered</h1>
+				<br> <br>
 
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Id Item</th>
-							<th>Description</th>
-							<th>Category Id</th>
-							<th>Price</th>
-							<th>Action</th>
+							<th>Order ID</th>
+							<th>Delivery Status</th>
+							<th>Delivered By</th>
+							<th>When Delivered</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="item" items="${items}">
+						<c:forEach var="order" items="${viewordersdelivered}">
 							<tr>
-								<td>${item.itemId}</td>
-								<td>${item.itemDescr}</td>
-								<td>${item.categoryId}</td>
-								<td>${item.price}</td>
-								<td><a class="btn btn-primary"
-									href="${pageContext.request.contextPath}/deleteItem?id=${item.itemId}">
-										<i Delete class="fa fa-trash"></i>
-								</a></td>
+								<td>${order.order_ID}</td>
+								<td>${order.deliveryStatus}</td>
+								<td>${order.deliveredby}</td>
+								<td>${order.whenDelivered}</td>
 							</tr>
+						</c:forEach>
+						<c:forEach var="delivery" items="${assigndelivery}">
+							<option value="${delivery.email}">${delivery.firstName}</option>
 						</c:forEach>
 
 					</tbody>
 				</table>
-			</div>
+				
 				 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
+			</div>
+
 		</form>
 	</div>
 
@@ -71,4 +64,5 @@
 </body>
 
 </html>
+
 

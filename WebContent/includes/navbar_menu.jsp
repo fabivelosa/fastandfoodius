@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="java.util.*"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+	
 <script>
 function highlight_menu(name,color) {
 	 var a = document.getElementById(name);
@@ -17,15 +23,15 @@ function highlight_menu(name,color) {
 			</button>
 			<div class=" " id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#services" href="#services">Services</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#about"    href="#about">About</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#team"     href="#team">Team</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#contact"  href="#contact">Contact</a></li>
+				
+						
+					
+					
 					<% if (session.getAttribute("logged") == Boolean.TRUE) { %>
-				     <li class="nav-item"><a class="nav-link js-scroll-trigger"  id="#logout" href="${pageContext.request.contextPath}/pages/logout.jsp " target="" >Logout</a></li>
+				     <li class="nav-item"><a class="nav-link js-scroll-trigger"  id="#logout" href="${pageContext.request.contextPath}/LogOut " target="" >Logout</a></li>
 					<% } else {%>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#login"  href="${pageContext.request.contextPath}/pages/login.jsp"    target="">Login</a></li>
-						 <% } %>
+				    <% } %>
 				</ul>	       
 			</div>
 		</div>

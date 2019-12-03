@@ -79,11 +79,26 @@
 								</tr>
 							  </tbody>
 						  </table>
+						  
+						    
+						  
+						  
 						 	<form id="order-form" action="${pageContext.request.contextPath}/saveOrder"
 						method="post"> 
 							<div class="text-center">
+							 Delivery Option :
+							<select name="deliveryOption">
+								<option value="D">Delivery</option>
+								<option value="T">Take Away</option>
+							</select>
+							<br>
+							<br>
+							<br>
 							<button type="submit" class="btn btn-primary">Confirm</button>
+						 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Cancel</a>
 						</div>
+						
+						
 		 			</form> 
 		
 		</div>

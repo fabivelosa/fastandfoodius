@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ait.fastfoodius.bean.OrderBean;
-import com.ait.fastfoodius.dao.OrdersDAO;
+import com.ait.fastfoodius.bean.PersonBean;
+import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/vieworders")
-public class ViewOrdersAssigned extends HttpServlet {
+@WebServlet("/customer")
+public class Customer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewOrdersAssigned() {
+    public Customer() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +31,14 @@ public class ViewOrdersAssigned extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = (String) request.getSession().getAttribute("user");	
-		OrdersDAO item = new OrdersDAO();// retrieve data from database
 		
-		List<OrderBean> vieworders = item.retrieveOrderAssigned(login);
 		
-		request.getSession().setAttribute("vieworders",vieworders );
+		PersonDAO personDao = new PersonDAO();
+		List<PersonBean> customer =  personDao.findAllCustomers();
+		request.getSession().setAttribute("customerList",customer);
+		
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/vieworderassigned.jsp");
-		
+	    request.getRequestDispatcher("/pages/customer.jsp").forward(request, response);		
 	}
 
 	/**

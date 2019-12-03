@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.OrderBean;
+import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrdersDAO;
+import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
  * Servlet implementation class Menu
  */
-@WebServlet("/vieworders")
-public class ViewOrdersAssigned extends HttpServlet {
+@WebServlet("/trackorder")
+public class TrackCustomerOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewOrdersAssigned() {
+    public TrackCustomerOrder() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +33,22 @@ public class ViewOrdersAssigned extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = (String) request.getSession().getAttribute("user");	
-		OrdersDAO item = new OrdersDAO();// retrieve data from database
 		
-		List<OrderBean> vieworders = item.retrieveOrderAssigned(login);
+		OrdersDAO orderDao = new OrdersDAO();
 		
-		request.getSession().setAttribute("vieworders",vieworders );
+	
+		String userId = (String) request.getSession(false).getAttribute("user");
+		PersonDAO personDAO = new PersonDAO();
+		PersonBean person = personDAO.findByUser(userId);
+		
+		
+		List<OrderBean> trackorder = orderDao.retrieveOrder(person.getId());
+		request.getSession().setAttribute("trackorder",trackorder );
+		
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath+"/pages/vieworderassigned.jsp");
-		
+
+		response.sendRedirect(contextPath+"/pages/trackOrder.jsp");
+
 	}
 
 	/**

@@ -45,8 +45,32 @@
 
 <body id="page-top">
 
-	<!-- Navigation -->
-	<%@include file="/includes/navbar_menu.jsp"%>
+	
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="${pageContext.request.contextPath}">Fast
+				and Foodius</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars"></i>
+			</button>
+			<div class=" " id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ml-auto">
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#services" href="#services">Services</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#about"    href="#about">About</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#team"     href="#team">Team</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#contact"  href="#contact">Contact</a></li>
+					<% if (session.getAttribute("logged") == Boolean.TRUE) { %>
+				     <li class="nav-item"><a class="nav-link js-scroll-trigger"  id="#logout" href="${pageContext.request.contextPath}/LogOut " target="" >Logout</a></li>
+					<% } else {%>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#login"  href="${pageContext.request.contextPath}/pages/login.jsp"    target="">Login</a></li>
+						 <% } %>
+				</ul>	       
+			</div>
+		</div>
+	</nav>
 
 	<!-- Header -->
 	<header class="masthead">
@@ -83,8 +107,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Services</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor
-						sit amet consectetur.</h3>
+					<h3 class="section-subheading text-muted">Delivery quality food at your hand.</h3>
 				</div>
 			</div>
 			<div class="row text-center">
@@ -93,30 +116,24 @@
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
 						class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">E-Commerce</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="service-heading">Web Portal</h4>
+					<p class="text-muted">Order your favorite food on-line</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
 						class="fas fa-laptop fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">Responsive Design</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="service-heading">Take Away</h4>
+					<p class="text-muted">You can take your food and eat wherever you want.</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
 						class="fas fa-lock fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">Web Security</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="service-heading">Delivery</h4>
+					<p class="text-muted">Receive your food at home.</p>
 				</div>
 			</div>
 		</div>
@@ -230,16 +247,16 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor
-						sit amet consectetur.</h3>
+					<h3 class="section-subheading text-muted">"Individual commitment to a group effort, that is what makes a team work, a company work, 
+					a society work, a civilization work." --Vince Lombardi </h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-						<h4>Kay Garland</h4>
-						<p class="text-muted">Lead Designer</p>
+						<h4>Fabi Velosa</h4>
+						<p class="text-muted">Back-end Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -252,12 +269,12 @@
 							</a></li>
 						</ul>
 					</div>
-				</div>
+				</div>			
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-						<h4>Larry Parker</h4>
-						<p class="text-muted">Lead Marketer</p>
+						<h4>Joyce Martins</h4>
+						<p class="text-muted">Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -273,9 +290,27 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-						<h4>Diana Pertersen</h4>
-						<p class="text-muted">Lead Developer</p>
+						<img class="mx-auto rounded-circle" src="img/team/4.jpg" alt="">
+						<h4>Obinna Nnadi</h4>
+						<p class="text-muted">Developer</p>
+						<ul class="list-inline social-buttons">
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-twitter"></i>
+							</a></li>
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-facebook-f"></i>
+							</a></li>
+							<li class="list-inline-item"><a href="#"> <i
+									class="fab fa-linkedin-in"></i>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="img/team/4.jpg" alt="">
+						<h4>Oladejo David</h4>
+						<p class="text-muted">Developer</p>
 						<ul class="list-inline social-buttons">
 							<li class="list-inline-item"><a href="#"> <i
 									class="fab fa-twitter"></i>
@@ -292,9 +327,9 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8 mx-auto text-center">
-					<p class="large text-muted">Lorem ipsum dolor sit amet,
-						consectetur adipisicing elit. Aut eaque, laboriosam veritatis,
-						quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+					<p class="large text-muted"> <i><b>Sean Kennedy, Mary Giblin, Conor Keighrey, Jackie Stewart,  and Martina Curran: </b>  <br>
+					Thank you for imparting knowledge the best you could. <br> Saying thank you cannot cover 
+					for all you have imputed in us but we'll say it nonetheless.</i></p>
 				</div>
 			</div>
 		</div>
@@ -334,8 +369,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Contact Us</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor
-						sit amet consectetur.</h3>
+					<h3 class="section-subheading text-muted">Looking forward to hear your opinion.</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -384,35 +418,6 @@
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-4">
-					<span class="copyright">Copyright &copy; Your Website 2019</span>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-inline social-buttons">
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-twitter"></i>
-						</a></li>
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-facebook-f"></i>
-						</a></li>
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-linkedin-in"></i>
-						</a></li>
-					</ul>
-				</div>
-				<div class="col-md-4">
-					<ul class="list-inline quicklinks">
-						<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-						<li class="list-inline-item"><a href="#">Terms of Use</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
 
 	<!-- Portfolio Modals -->
 
@@ -431,7 +436,7 @@
 						<div class="col-lg-8 mx-auto">
 							<div class="modal-body">
 								<!-- Project Details Go Here -->
-								<h2 class="text-uppercase">Project Name</h2>
+								<h2 class="text-uppercase">Fast and Foodius</h2>
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"

@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class DatabaseConnection {
     // init database constants
- //   private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaturant?useSSL=false";
+ //   private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaurant?useSSL=false";
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/Restaurant?useSSL=false&allowPublicKeyRetrieval=true";
 
     private static final String USERNAME = "root";
@@ -34,6 +34,7 @@ public class DatabaseConnection {
     public Connection connect() throws ClassNotFoundException {
         if (connection == null) {
             try {
+            	DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
                 connection = DriverManager.getConnection(DATABASE_URL, getProperties());
             } catch (SQLException e) {
                 e.printStackTrace();

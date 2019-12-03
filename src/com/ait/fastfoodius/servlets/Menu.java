@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.MenuBean;
+import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.MenuDAO;
+import com.ait.fastfoodius.dao.PersonDAO;
 import com.ait.fastfoodius.resource.MenuCategory;
 
 /**
@@ -36,6 +38,15 @@ public class Menu extends HttpServlet {
 		
 		
 		MenuDAO menuDao = new MenuDAO();
+		PersonDAO customer = new PersonDAO();
+		
+	    String customerId = request.getParameter("id");
+		PersonBean person = null;
+	    if (customerId != null) {
+	    	 person = customer.findById(Integer.parseInt(customerId));
+	 		request.getSession().setAttribute("customer",person );
+	    }
+		
 		List<MenuBean> starters =  menuDao.findByCategory(MenuCategory.STARTER.getIdCategory());
 		request.getSession().setAttribute("starters",starters );
 		

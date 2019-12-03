@@ -1,6 +1,7 @@
 package com.ait.fastfoodius.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,13 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.OrderBean;
+import com.ait.fastfoodius.bean.PersonBean;
+import com.ait.fastfoodius.dao.OrdersDAO;
+import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
- * Servlet implementation class Customer
+ * Servlet implementation class Menu
  */
-@WebServlet("/checkOutOrder")
-public class CheckOutOrder extends HttpServlet {
+@WebServlet("/viewordersdelivered")
+public class ViewOrdersDelivered extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ViewOrdersDelivered() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -24,13 +36,16 @@ public class CheckOutOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		  
+		OrdersDAO order = new OrdersDAO();// retrieve data from database
+		List<OrderBean> viewordersdelivered = order.retrieveOrderDelivered();
+		request.getSession().setAttribute("viewordersdelivered", viewordersdelivered);
 		
-		OrderBean ordem = (OrderBean) request.getSession().getAttribute("order");
-		
-		request.getRequestDispatcher("/pages/orderCheckout.jsp").forward(request, response);
+		String contextPath = request.getContextPath();
+
+		response.sendRedirect(contextPath + "/pages/viewordersdelivered.jsp");
+
 	}
-	
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -40,4 +55,5 @@ public class CheckOutOrder extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

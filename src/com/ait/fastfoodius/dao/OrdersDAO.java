@@ -11,6 +11,7 @@ import java.util.List;
 import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.resource.DatabaseConnection;
 import com.ait.fastfoodius.resource.deliveryStatus;
+import com.ait.fastfoodius.resource.paymentStatus;
 
 public class OrdersDAO {
 	// Connection DB
@@ -19,8 +20,8 @@ public class OrdersDAO {
 
 	public void insertOrder(OrderBean order) {
 		PreparedStatement stmtp = null;
-		String cmd = "insert into orders (customer_ID,orderAddress,orderCity,orderPostalCode,orderEmailAddress"
-				+ ", orderPhoneNumber,orderDate,paymentStatus,deliveryStatus,requiredDeliveryDate,orderchannel)"
+		String cmd = "insert into orders (customer_ID,orderAddress,orderCity,orderPostalCode,orderEmailAddress,"
+				+ " orderPhoneNumber,orderDate,paymentStatus,deliveryStatus,requiredDeliveryDate,orderchannel)"
 				+ "values (?,?,?,?,?,?,?,?,?,?,?);";
 		try {
 			con = new DatabaseConnection().connect();
@@ -29,7 +30,7 @@ public class OrdersDAO {
 			stmtp.setString(2, order.getOrderAddress());
 			stmtp.setString(3, order.getOrderCity());
 			stmtp.setString(4, order.getOrderPostalCode());
-			stmtp.setString(5, order.getOrderEmailAddress());
+			stmtp.setString(5, order.getOrderPostalCode());
 			stmtp.setString(6, order.getOrderPhoneNumber());
 			stmtp.setDate(7, new java.sql.Date(order.getOrderDate().getTime()));
 			stmtp.setString(8, order.getPaymentStatus());
@@ -43,22 +44,40 @@ public class OrdersDAO {
 		}
 	}
 
-	public void retrieveOrder(int customerID) {
+	public List<OrderBean> retrieveOrder(int customerID) {
 		PreparedStatement stmtp = null;
 		ResultSet rs = null;
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
 		String cmd = "select * from orders where customer_ID = ? ;";
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
 			stmtp.setInt(1, customerID);
 			rs = stmtp.executeQuery();
+			rs = stmtp.executeQuery();
 			while (rs.next()) {
-				// fullfill order
-				order.setOrder_ID(rs.getInt(1));
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setCustomer_ID(rs.getInt("customer_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setOrderPostalCode(rs.getString("orderPostalCode"));
+				order.setOrderEmailAddress(rs.getString("orderEmailAddress"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				order.setOrderDate(rs.getDate("orderDate"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				order.setDeliveredby(rs.getString("deliveredBy"));
+				order.setWhenDelivered(rs.getDate("whenDelivered"));
+				orderlist.add(order);
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+
+		return orderlist;
+
 	}
 
 	public int retrieveLastOrder(Integer customerID) {
@@ -89,7 +108,7 @@ public class OrdersDAO {
 		ResultSet rs = null;
 		String cmd = "select order_ID, customer_ID,  orderAddress, orderCity, orderPostalCode, orderEmailAddress, "
 				+ "orderPhoneNumber,orderDate, paymentStatus, "
-				+ "requiredDeliveryDate,  deliveredBy, deliveryStatus, whenDelivered from orders ;";
+				+ "requiredDeliveryDate,  deliveredBy, deliveryStatus, whenDelivered from orders order by deliveryStatus, orderDate ;";
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
@@ -175,35 +194,70 @@ public class OrdersDAO {
 		}
 	}
 
-	public void retrieveOrder(String deliveryStatus) {
-		PreparedStatement stmtp = null;
-		ResultSet rs = null;
-		String cmd = "select * from orders where deliverystatus = ? ;";
-		try {
-			con = new DatabaseConnection().connect();
-			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, deliveryStatus);
-			rs = stmtp.executeQuery();
-			while (rs.next()) {
-				// fullfill order
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-	}
-
 	public List<OrderBean> retrieveOrderAssigned(String deliveredBy) {
 		PreparedStatement stmtp = null;
 		List<OrderBean> orderlist = new ArrayList<OrderBean>();
 		ResultSet rs = null;
-		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber "
-				+ "from orders where deliveryStatus = ? and deliveredBy = ? ;";
+		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, deliveryStatus, paymentStatus, orderPhoneNumber "
+				+ "from orders where deliveryStatus in ( ? , ? ) and deliveredBy = ? ;";
 
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, deliveryStatus.ASSIGNED.toString());
-			stmtp.setString(2, deliveredBy);
+			stmtp.setString(1, deliveryStatus.ASSIGNED.getStatus().toString());
+			stmtp.setString(2, deliveryStatus.ONTHEWAY.getStatus().toString());
+			stmtp.setString(3, deliveredBy);
+			rs = stmtp.executeQuery();
+
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setOrderAddress(rs.getString("orderAddress"));
+				order.setOrderCity(rs.getString("orderCity"));
+				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
+				order.setPaymentStatus(rs.getString("paymentStatus"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				orderlist.add(order);
+
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return orderlist;
+	}
+
+
+	public void updateOrderDelivered(String loginDeliverer, int orderId) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveryStatus = ?, paymentStatus = ? , deliveredBy = ?, whenDelivered = ? where order_id = ? ;";
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.DELIVERED.getStatus().toString());
+			stmtp.setString(2, paymentStatus.PAID_ON_DELIVERY.toString());
+			stmtp.setString(3, loginDeliverer);
+			//stmtp.setDate(4, new java.sql.Date());
+			stmtp.setInt(5, orderId);
+			stmtp.executeUpdate();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+	}
+	
+
+	public List<OrderBean> retrieveOrderforDelivery() {
+		PreparedStatement stmtp = null;
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, orderAddress, orderCity, requiredDeliveryDate, paymentStatus, orderPhoneNumber, deliveryStatus "
+				+ "from orders where deliveryStatus = ? ;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.PENDING.getStatus().toString());
 			rs = stmtp.executeQuery();
 
 			while (rs.next()) {
@@ -214,33 +268,103 @@ public class OrdersDAO {
 				order.setRequiredDeliveryDate(rs.getDate("requiredDeliveryDate"));
 				order.setPaymentStatus(rs.getString("paymentStatus"));
 				order.setOrderPhoneNumber(rs.getString("orderPhoneNumber"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
 				orderlist.add(order);
 			}
-			
 
-			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return orderlist;
 	}
 
-	public void updateOrderDelivered(String deliveryStatus, String loginDeliverer, Date deliveryDate) {
+	public List<OrderBean> retrieveOrderDelivered() {
 		PreparedStatement stmtp = null;
-		String cmd = "update orders set delyverystatus = ? , deliveredBy = ?, whenDelivered = ? where order_id = ? ;";
+		List<OrderBean> orderlist = new ArrayList<OrderBean>();
+		ResultSet rs = null;
+		String cmd = "select order_ID, deliveryStatus, deliveredBy, whenDelivered "
+				+ "from orders where deliveryStatus = ? ;";
+
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, deliveryStatus);
-			stmtp.setString(2, loginDeliverer);
-			stmtp.setDate(3, new java.sql.Date(deliveryDate.getTime()));
-			stmtp.executeUpdate();
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			stmtp.setString(1, deliveryStatus.DELIVERED.toString());
+			rs = stmtp.executeQuery();
+
+			while (rs.next()) {
+				OrderBean order = new OrderBean();
+				order.setOrder_ID(rs.getInt("order_ID"));
+				order.setDeliveryStatus(rs.getString("deliveryStatus"));
+				order.setDeliveredby(rs.getString("deliveredby"));
+				order.setWhenDelivered(rs.getDate("whenDelivered"));
+				orderlist.add(order);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		
+		return orderlist;
 	}
 
+
+
+	public void updateAssignedDriver(int orderId, String driverEmail) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveredby = ?, deliveryStatus = ? where order_id = ?;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, driverEmail);
+			stmtp.setString(2, deliveryStatus.ASSIGNED.getStatus().toString());
+			stmtp.setInt(3, orderId);
+			stmtp.executeUpdate();
+			System.out.println(stmtp.toString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println(stmtp.toString());
+		}
+	}
 	
 	
+	public void updateOrderOnTheWay(int orderId) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveryStatus = ? where order_id = ?;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.ONTHEWAY.getStatus().toString());
+			stmtp.setInt(2, orderId);
+			stmtp.executeUpdate();
+			System.out.println(stmtp.toString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println(stmtp.toString());
+		}
+
+	}
+	
+	
+	public void updateOrderDelivered(int orderId,java.util.Date date,String payment) {
+		PreparedStatement stmtp = null;
+		String cmd = "update orders set deliveryStatus = ?, whenDelivered = ?, paymentStatus = ?  where order_id = ?;";
+
+		try {
+			con = new DatabaseConnection().connect();
+			stmtp = con.prepareStatement(cmd);
+			stmtp.setString(1, deliveryStatus.DELIVERED.getStatus().toString());
+			stmtp.setDate(2, new java.sql.Date(date.getTime()));
+			stmtp.setString(3, payment);
+			stmtp.setInt(4, orderId);
+			stmtp.executeUpdate();
+			System.out.println(stmtp.toString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println(stmtp.toString());
+		}
+
+	}
+
+
 }
