@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ait.fastfoodius.dao.MenuDAO;
+import com.ait.fastfoodius.dao.OrdersDAO;
 
 /**
  * Servlet implementation class Customer
  */
-@WebServlet("/deleteItem")
+@WebServlet("/updatedelivered")
 public class OrderDelivered extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,11 +24,12 @@ public class OrderDelivered extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		MenuDAO item = new MenuDAO();// retrieve data from database
+		OrdersDAO order = new OrdersDAO();// retrieve data from database
 		String id = request.getParameter("id");
-		item.deleteItemById(Integer.parseInt(id));
-
+		String delivererId = request.getParameter("user");
+		order.updateOrderDelivered(delivererId, Integer.parseInt(id));
+		
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/addItem");
+		response.sendRedirect(contextPath + "/updatedelivered");
 	}
 }
