@@ -228,7 +228,7 @@
 								  	  <td>${menu.price}</td>
 								  	  <td>
 								  	  	<button onclick="addItem(${menu.itemId},${menu.price},'${menu.itemDescr}')">
-								  	  			<i class="fa fa-shopping-cart"></i>
+								  	  			<i class="fa fa-cart-plus"></i>
 								  	 	</button> 
 								  	  </td>
 								  </tr>

@@ -79,15 +79,17 @@ public class AddPersonController extends HttpServlet {
 		person.setEmail(email);
 
 		PersonDAO dao = new PersonDAO();
-		Boolean n = dao.insertPerson(person);
+		Boolean saved = dao.insertPerson(person);
+		LoginDAO daoL = new LoginDAO();
 
-		if (n) {
-			LoginDAO daoL = new LoginDAO();
-			daoL.addLogin(email, password, 2); 
+		if (title.equals("staff")) {
+			daoL.addLogin(email, password, 3);
+		} else if (title.equals("delivery")) {
+			daoL.addLogin(email, password, 4);
+		} else {
+			daoL.addLogin(email, password, 2);
 		}
-
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath + "/pages/login.jsp");
 	}
-
 }

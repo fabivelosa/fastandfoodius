@@ -1,7 +1,7 @@
 package com.ait.fastfoodius.resource;
 
-public enum paymentStatus {
+public enum PaymentStatus {
 	PAID_FRONT_DESK,
 	PENDING,
-	PAID_ON_DELIVERY,
+	PAID_ON_DELIVERY;
 }

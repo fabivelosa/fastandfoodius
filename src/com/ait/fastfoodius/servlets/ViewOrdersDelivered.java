@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ait.fastfoodius.bean.OrderBean;
-import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrdersDAO;
-import com.ait.fastfoodius.dao.PersonDAO;
 
 /**
  * Servlet implementation class Menu

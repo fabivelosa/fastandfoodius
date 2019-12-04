@@ -46,7 +46,6 @@ public class LoginDAO {
 				stmtp.setString(1, username);
 				stmtp.setString(2, password);
 				stmtp.setInt(3, accessType);
-				System.out.println(stmtp.toString());
 				stmtp.executeUpdate();
 			} catch (Exception e1) {
 				e1.printStackTrace();
