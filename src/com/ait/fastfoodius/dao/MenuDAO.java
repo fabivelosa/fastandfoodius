@@ -88,7 +88,6 @@ public class MenuDAO {
 			
 			
 			ResultSet rs = stm.executeQuery();
-			System.out.println(stm);
 			while (rs.next()) {
 				MenuBean menu = extract(rs);
 				item.add(menu);

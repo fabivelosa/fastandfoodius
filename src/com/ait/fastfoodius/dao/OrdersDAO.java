@@ -35,7 +35,6 @@ public class OrdersDAO {
 			stmtp.setString(9, order.getDeliveryStatus());
 			stmtp.setDate(10, new java.sql.Date(order.getOrderDate().getTime()));
 			stmtp.setString(11, order.getOrderChannel());
-			System.out.println(stmtp.toString());
 			stmtp.executeUpdate();
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -109,7 +108,6 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			System.out.println(cmd.toString());
 			rs = stmtp.executeQuery();
 			while (rs.next()) {
 				OrderBean order = new OrderBean();
@@ -128,9 +126,6 @@ public class OrdersDAO {
 				order.setWhenDelivered(rs.getDate("whenDelivered"));
 				orderlist.add(order);
 			}
-			System.out.println(stmtp.toString());
-			System.out.println(order.toString());
-
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -239,10 +234,8 @@ public class OrdersDAO {
 			stmtp.setString(2, DeliverStatus.ASSIGNED.toString());
 			stmtp.setInt(3, orderId);
 			stmtp.executeUpdate();
-			System.out.println(stmtp.toString());
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println(stmtp.toString());
 		}
 	}
 	
@@ -257,10 +250,8 @@ public class OrdersDAO {
 			stmtp.setString(1, DeliverStatus.ONTHEWAY.toString());
 			stmtp.setInt(2, orderId);
 			stmtp.executeUpdate();
-			System.out.println(stmtp.toString());
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println(stmtp.toString());
 		}
 
 	}
@@ -278,10 +269,8 @@ public class OrdersDAO {
 			stmtp.setString(3, payment);
 			stmtp.setInt(4, orderId);
 			stmtp.executeUpdate();
-			System.out.println(stmtp.toString());
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println(stmtp.toString());
 		}
 	}
 

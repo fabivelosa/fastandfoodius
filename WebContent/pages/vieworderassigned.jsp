@@ -22,11 +22,10 @@
 
 	<div class="container">
 			<div>
-				<br> <br> <br> <br> <br>
-				<br> <br> <br> <br> <br>
+				<br> <br> <br> <br> 
+				<br> <br> 
 				<h1>View Orders</h1>
 				<br>
-				
 				<br>
 
 				<table class="table table-striped">

@@ -68,9 +68,7 @@
 								  	  <td>${menu.price}</td>
 								  </tr>
 								 <c:set var="total" value="${total + menu.price}" />
-								  
-							</c:forEach>
-								  
+							</c:forEach>								  
 								  <tr>
 									 <td>TOTAL</td>
 								  	 <td></td>
@@ -79,31 +77,29 @@
 								</tr>
 							  </tbody>
 						  </table>
-						  
-						    
-						  
+				 <%  int roleId = ((Integer) session.getAttribute("role")).intValue();
+					pageContext.setAttribute("roleId",roleId);%>
 						  
 						 	<form id="order-form" action="${pageContext.request.contextPath}/saveOrder"
-						method="post"> 
+								method="post"> 
 							<div class="text-center">
-							 Delivery Option :
+							<c:if test="${roleId == 3}">
+							 Delivery Option : ${roleId == 3}
 							<select name="deliveryOption">
 								<option value="D">Delivery</option>
 								<option value="T">Take Away</option>
 							</select>
+							</c:if>
 							<br>
 							<br>
 							<br>
+							
+							
 							<button type="submit" class="btn btn-primary">Confirm</button>
 						 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Cancel</a>
-						</div>
-						
-						
+						 </div>
 		 			</form> 
-		
 		</div>
-
-
 	<%@include file="../includes/footer.jsp"%>
 </body>
 
