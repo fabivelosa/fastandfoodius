@@ -26,8 +26,6 @@
 				document.getElementById("status").value = 'DELIVERED';
 			}
 			
-		
-	
 		}
 	}
 

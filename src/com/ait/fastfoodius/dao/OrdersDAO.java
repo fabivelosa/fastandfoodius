@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.ait.fastfoodius.bean.OrderBean;
 import com.ait.fastfoodius.resource.DatabaseConnection;
-import com.ait.fastfoodius.resource.DeliveryStatus;
+import com.ait.fastfoodius.resource.DeliverStatus;
 import com.ait.fastfoodius.resource.PaymentStatus;
 
 public class OrdersDAO {
@@ -204,8 +204,8 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.ASSIGNED.getStatus().toString());
-			stmtp.setString(2, DeliveryStatus.ONTHEWAY.getStatus().toString());
+			stmtp.setString(1, DeliverStatus.ASSIGNED.toString());
+			stmtp.setString(2, DeliverStatus.ONTHEWAY.toString());
 			stmtp.setString(3, deliveredBy);
 			rs = stmtp.executeQuery();
 
@@ -234,7 +234,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.DELIVERED.getStatus().toString());
+			stmtp.setString(1, DeliverStatus.DELIVERED.toString());
 			stmtp.setString(2, PaymentStatus.PAID_ON_DELIVERY.toString());
 			stmtp.setString(3, loginDeliverer);
 			//stmtp.setDate(4, new java.sql.Date());
@@ -257,7 +257,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.PENDING.getStatus().toString());
+			stmtp.setString(1, DeliverStatus.PENDING.toString());
 			rs = stmtp.executeQuery();
 
 			while (rs.next()) {
@@ -288,7 +288,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.DELIVERED.toString());
+			stmtp.setString(1, DeliverStatus.DELIVERED.toString());
 			rs = stmtp.executeQuery();
 
 			while (rs.next()) {
@@ -316,7 +316,7 @@ public class OrdersDAO {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
 			stmtp.setString(1, driverEmail);
-			stmtp.setString(2, DeliveryStatus.ASSIGNED.getStatus().toString());
+			stmtp.setString(2, DeliverStatus.ASSIGNED.toString());
 			stmtp.setInt(3, orderId);
 			stmtp.executeUpdate();
 			System.out.println(stmtp.toString());
@@ -334,7 +334,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.ONTHEWAY.getStatus().toString());
+			stmtp.setString(1, DeliverStatus.ONTHEWAY.toString());
 			stmtp.setInt(2, orderId);
 			stmtp.executeUpdate();
 			System.out.println(stmtp.toString());
@@ -353,7 +353,7 @@ public class OrdersDAO {
 		try {
 			con = new DatabaseConnection().connect();
 			stmtp = con.prepareStatement(cmd);
-			stmtp.setString(1, DeliveryStatus.DELIVERED.getStatus().toString());
+			stmtp.setString(1, DeliverStatus.DELIVERED.toString());
 			stmtp.setDate(2, new java.sql.Date(date.getTime()));
 			stmtp.setString(3, payment);
 			stmtp.setInt(4, orderId);
@@ -363,7 +363,7 @@ public class OrdersDAO {
 			e1.printStackTrace();
 			System.out.println(stmtp.toString());
 		}
-
+System.out.println(stmtp.toString());
 	}
 
 

@@ -14,7 +14,7 @@ import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.OrderItemDAO;
 import com.ait.fastfoodius.dao.OrdersDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
-import com.ait.fastfoodius.resource.DeliveryStatus;
+import com.ait.fastfoodius.resource.DeliverStatus;
 import com.ait.fastfoodius.resource.PaymentStatus;
 import com.ait.fastfoodius.resource.Role;
 
@@ -52,7 +52,7 @@ public class Order extends HttpServlet {
 			user = ((PersonBean) request.getSession(false).getAttribute("customer")).getEmail() ;
 			ordem.setPaymentStatus(PaymentStatus.PAID_FRONT_DESK.toString());
 			if(deliveryOption.equals("T")) {
-				ordem.setDeliveryStatus(DeliveryStatus.DELIVERED.toString());
+				ordem.setDeliveryStatus(DeliverStatus.DELIVERED.toString());
 			}
 			
 		} else {

@@ -29,16 +29,14 @@ public class UpdateDelivered extends HttpServlet {
 		OrdersDAO order = new OrdersDAO();// retrieve data from database
 
 		String order_id = request.getParameter("order_id");
-		
 		String paymentStatusVar = request.getParameter("paymentStatus");
 
-		
 		if(paymentStatusVar.equals(PaymentStatus.PAID_FRONT_DESK.toString())){
 			paymentStatusVar = PaymentStatus.PAID_FRONT_DESK.toString();
 		}else {
 			paymentStatusVar = PaymentStatus.PAID_ON_DELIVERY.toString();
 		}
-
+System.out.println("2"+paymentStatusVar);
 		order.updateOrderDelivered(Integer.parseInt(order_id),new Date(),paymentStatusVar);
 		
 		String contextPath = request.getContextPath();
