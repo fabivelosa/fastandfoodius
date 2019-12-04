@@ -10,27 +10,6 @@
 
 <head>
 
-<script>
-	
-	function updateOrder(id, status) {
-
-		
-		if (null == id) {
-			return false;
-	
-		}else{
-			
-			if(status == 'ON_THE_WAY'){
-				document.getElementById("status").value = 'ONTHEWAY';
-			}else{
-				document.getElementById("status").value = 'DELIVERED';
-			}
-			
-		}
-	}
-
-</script>
-
 </head>
 
 <body id="page-top">
@@ -42,9 +21,8 @@
 
 
 	<div class="container">
-
-			method="post">
 			<div>
+				<br> <br> <br> <br> <br>
 				<br> <br> <br> <br> <br>
 				<h1>View Orders</h1>
 				<br>
@@ -66,11 +44,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					
-					
-						
 						<c:forEach var="order" items="${vieworders}">
-							
 							<tr>
 								<td>${order.order_ID}</td>
 								<td>${order.orderAddress}</td>
@@ -79,8 +53,6 @@
 								<td>${order.deliveryStatus}</td>
 								<td>${order.paymentStatus}</td>
 								<td>${order.orderPhoneNumber}</td>
-								
-								<c:out value="${order.deliveryStatus}"/>
 								 <c:if test="${order.deliveryStatus == 'Assigned' || order.deliveryStatus == 'ASSIGNED'}">
 									<td>
 										<form action="${pageContext.request.contextPath}/UpdateOrderOnTheWay" method="post">
@@ -104,8 +76,7 @@
 									  		 
 									  	</form> 
 									  	</td> 	
-									  </c:if>  
-									  		
+									  </c:if>    		
 							</tr>
 						</c:forEach>
 					
@@ -113,8 +84,6 @@
 				</table>
 				 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 			</div>
-
-		
 	</div>
 
 	<%@include file="../includes/footer.jsp"%>
