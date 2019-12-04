@@ -37,16 +37,18 @@ public class AssignOrderToDelivery extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String personEmail = request.getParameter("person_id");
-		String orderId = request.getParameter("order_id");
+		OrdersDAO orderDao = new OrdersDAO();// retrieve data from database
+		List<OrderBean> viewpendingorders = orderDao.retrieveOrderforDelivery();
+		request.getSession().setAttribute("viewpendingorders", viewpendingorders);
 
-		OrdersDAO dao = new OrdersDAO();
-		dao.updateAssignedDriver(Integer.parseInt(orderId), personEmail);
-		
-	
-		
+		PersonDAO delivery = new PersonDAO();
+		List<PersonBean> assigndelivery = delivery.findByRole("Delivery Driver");
+		request.getSession().setAttribute("assigndelivery", assigndelivery);
+
+
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/getOrdersToDelivery");
+
+		response.sendRedirect(contextPath + "/pages/assignordertodelivery.jsp");
 
 	}
 
@@ -57,11 +59,16 @@ public class AssignOrderToDelivery extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String personEmail = request.getParameter("person_id");
+		String orderId = request.getParameter("order_id");
 
-
-		doGet(request, response);
-
-
+		OrdersDAO dao = new OrdersDAO();
+		dao.updateAssignedDriver(Integer.parseInt(orderId), personEmail);
+		
+	
+		
+		String contextPath = request.getContextPath();
+		response.sendRedirect(contextPath + "/viewpendingorders");
 	}
 
 }

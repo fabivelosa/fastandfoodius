@@ -18,8 +18,8 @@ import com.ait.fastfoodius.bean.PersonBean;
 import com.ait.fastfoodius.dao.MenuDAO;
 import com.ait.fastfoodius.dao.PersonDAO;
 import com.ait.fastfoodius.resource.Role;
-import com.ait.fastfoodius.resource.deliveryStatus;
-import com.ait.fastfoodius.resource.paymentStatus;
+import com.ait.fastfoodius.resource.DeliveryStatus;
+import com.ait.fastfoodius.resource.PaymentStatus;
 
 /**
  * Servlet implementation class Customer
@@ -48,16 +48,16 @@ public class OrderAddItem extends HttpServlet {
 			
 			if (Integer.parseInt(role)== Role.FRONTDESK.getIdRole()) {
 				user = ((PersonBean) request.getSession(false).getAttribute("customer")).getEmail() ;
-				order.setPaymentStatus(paymentStatus.PAID_FRONT_DESK.toString());
+				order.setPaymentStatus(PaymentStatus.PAID_FRONT_DESK.toString());
 				order.setOrderChannel("FRONTDESK");
 			} else {
 				 user = (String) request.getSession(false).getAttribute("user");
 				 order.setOrderChannel("ONLINE");
-				 order.setPaymentStatus(paymentStatus.PENDING.toString());
+				 order.setPaymentStatus(PaymentStatus.PENDING.toString());
 			}
 			PersonBean person = personDAO.findByUser(user);
 			order.setCustomer_ID(person.getId()); 
-			order.setDeliveryStatus(deliveryStatus.PENDING.getStatus().toString());
+			order.setDeliveryStatus(DeliveryStatus.PENDING.getStatus().toString());
 			order.setOrderAddress(person.getAddress());
 			order.setOrderCity(person.getCity());
 			order.setOrderDate(new Date());

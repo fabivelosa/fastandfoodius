@@ -1,6 +1,6 @@
 package com.ait.fastfoodius.resource;
 
-public enum deliveryStatus {
+public enum DeliveryStatus {
 	
 	PENDING("PENDING"),
 	ASSIGNED("ASSIGNED"),
@@ -10,7 +10,7 @@ public enum deliveryStatus {
     private final String status;
 	
 	
-	deliveryStatus(String  status) { 
+	DeliveryStatus(String  status) { 
         this.status = status;
     }
     

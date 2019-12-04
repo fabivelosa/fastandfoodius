@@ -81,7 +81,9 @@
 								<td>${order.deliveryStatus}</td>
 								<td>${order.paymentStatus}</td>
 								<td>${order.orderPhoneNumber}</td>
-								 <c:if test="${order.deliveryStatus == 'ASSIGNED'}">
+								
+								<c:out value="${order.deliveryStatus}"/>
+								 <c:if test="${order.deliveryStatus == 'Assigned' || order.deliveryStatus == 'ASSIGNED'}">
 									<td>
 										<form action="${pageContext.request.contextPath}/UpdateOrderOnTheWay" method="post">
 										<input type="hidden" name="order_id" value="${order.order_ID}" />
