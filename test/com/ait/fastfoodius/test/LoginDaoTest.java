@@ -34,10 +34,10 @@ public class LoginDaoTest {
 
 	@Test
 	void testAddLogin() {
-		login = loginDao.searchUserPwd("customer");
+		login = loginDao.searchUserPwd("customer@fastfood.com");
 		assertEquals("123", login.getPassword());
 		assertEquals(2, login.getRole());
-		assertEquals("customer", login.getUsername());
+		assertEquals("customer@fastfood.com", login.getUsername());
 
 		
 
