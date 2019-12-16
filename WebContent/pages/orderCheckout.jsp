@@ -84,7 +84,7 @@
 								method="post"> 
 							<div class="text-center">
 							<c:if test="${roleId == 3}">
-							 Delivery Option : ${roleId == 3}
+							 Delivery Option :
 							<select name="deliveryOption">
 								<option value="D">Delivery</option>
 								<option value="T">Take Away</option>
