@@ -42,7 +42,7 @@ CREATE TABLE login (
         REFERENCES accessType (accessType)
 );
 
-/*Table structure for table category */	
+/*Table structure for table category */
 DROP TABLE IF EXISTS category;
 CREATE TABLE category (
     category_ID INTEGER AUTO_INCREMENT,
@@ -62,7 +62,7 @@ CREATE TABLE menu (
         REFERENCES category (category_ID)
 );
 
-/*Table structure for table orders */      
+/*Table structure for table orders */
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
     order_ID INTEGER auto_increment NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE orders (
     FOREIGN KEY (customer_ID)
         REFERENCES person (person_ID)
 );
- 
+
 /*Table structure for table orderdetail */
 DROP TABLE IF EXISTS orderdetail;
 CREATE TABLE orderdetail (
@@ -98,8 +98,7 @@ CREATE TABLE orderdetail (
         REFERENCES orders (order_ID)
 );
 
-ALTER TABLE ORDERS AUTO_INCREMENT = 10260;
-      
+ALTER TABLE orders AUTO_INCREMENT = 10260;
 
 
 

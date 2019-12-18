@@ -8,6 +8,15 @@ that  four different user roles  can  perform specific actions on the website:
 -> management staff who can be able to view all orders made and also make any changes to the food menu.
 The application is in JSP with Java using MySql as database.
 
+## Set up
+Before running the project or even validate everything by running mvn clean install, you need a DB running. 
+A dockerfile has been provided ready to use, you need just to build it.
+
+```shell script
+docker build -t food-mysql .
+docker run --name food-mysql -p 3306:3306 food-mysql -d
+```
+
 # fastandfoodius - Phase 2
 -> rest api 
 -> spring
