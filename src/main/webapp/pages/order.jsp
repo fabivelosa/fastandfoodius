@@ -43,7 +43,7 @@
 			
 			$.ajax({
 				type : "GET",
-				url : "/orderAddItem",
+				url : "/fastandfoodius/orderAddItem",
 				data : dataString,
 			dataType : "text",
 			success : function(data) {
@@ -239,7 +239,7 @@
 						method="post"> 
 							<div class="text-center">
 							<button type="submit" class="btn btn-primary">Check Out Order</button>
-							 <a class="btn btn-primary" href="${pageContext.request.contextPath}main.jsp">Back</a>
+							 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 						</div>
 		 			</form> 
 		 			
