@@ -126,7 +126,7 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Sign in</button>
-			 <a class="btn btn-primary" href="${pageContext.request.contextPath}main.jsp">Back</a>
+			 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 		</form>
 	</div>
 

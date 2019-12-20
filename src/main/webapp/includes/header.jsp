@@ -9,12 +9,12 @@
 
 <!-- Bootstrap core CSS -->
 <link
-	href="${pageContext.request.contextPath}../vendor/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom fonts for this template -->
 <link
-	href="${pageContext.request.contextPath}../vendor/fontawesome-free/css/all.min.css"
+	href="${pageContext.request.contextPath}/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">

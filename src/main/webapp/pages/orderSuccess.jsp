@@ -45,7 +45,7 @@
 						<br>
 						<div>
 							<h1 align="center" >Your Order: ${orderId}.</h1>
-							 <a class="btn btn-primary" href="${pageContext.request.contextPath}main.jsp">Back</a>
+							 <a class="btn btn-primary" href="${pageContext.request.contextPath}/pages/main.jsp">Back</a>
 						</div>
 		</div>
 

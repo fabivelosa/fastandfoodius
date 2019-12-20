@@ -30,7 +30,7 @@ function highlight_menu(name,color) {
 					<% if (session.getAttribute("logged") == Boolean.TRUE) { %>
 				     <li class="nav-item"><a class="nav-link js-scroll-trigger"  id="#logout" href="${pageContext.request.contextPath}/LogOut " target="" >Logout</a></li>
 					<% } else {%>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#login" href="${pageContext.request.contextPath}login.jsp" target="">Login</a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger" id="#login" href="${pageContext.request.contextPath}/pages/login.jsp" target="">Login</a></li>
 				    <% } %>
 				</ul>	       
 			</div>

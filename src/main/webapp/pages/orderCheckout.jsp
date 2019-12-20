@@ -96,7 +96,7 @@
 							
 							
 							<button type="submit" class="btn btn-primary">Confirm</button>
-						 <a class="btn btn-primary" href="${pageContext.request.contextPath}main.jsp">Cancel</a>
+						 <a class="btn btn-primary" href="${pageContext.request.contextPath}pages/main.jsp">Cancel</a>
 						 </div>
 		 			</form> 
 		</div>

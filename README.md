@@ -15,7 +15,10 @@ A dockerfile has been provided ready to use, you need just to build it.
 ```shell script
 docker build -t food-mysql .
 docker run --name food-mysql -p 3306:3306 food-mysql -d
+mvn jetty:run
 ```
+
+Then open your browser and go to this url http://localhost:8080/fastandfoodius/
 
 # fastandfoodius - Phase 2
 -> rest api 
