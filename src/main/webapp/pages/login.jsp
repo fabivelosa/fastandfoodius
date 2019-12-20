@@ -55,9 +55,9 @@
 									class="btn btn-primary btn-xl text-uppercase" name="submit" value="submit" >Login
 							</button>
 							<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-							   href="${pageContext.request.contextPath}forgotpassword.jsp">Forgot Password</a>
+							   href="${pageContext.request.contextPath}/pages/forgotpassword.jsp">Forgot Password</a>
 							<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-							   href="${pageContext.request.contextPath}signup.jsp">Sign-up</a>
+							   href="${pageContext.request.contextPath}/pages/signup.jsp">Sign-up</a>
 							
 							</div>
 						</div>

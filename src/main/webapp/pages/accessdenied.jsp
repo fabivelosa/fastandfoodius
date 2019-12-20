@@ -32,7 +32,7 @@
 				<div class="intro-heading text-uppercase" >please login to make
 					an order</div>
 					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-									href="${pageContext.request.contextPath}forgotpassword.jsp">Forgot Password</a>
+									href="${pageContext.request.contextPath}/pages/forgotpassword.jsp">Forgot Password</a>
 				<% } %>
  			</div>
 		</div>

@@ -43,7 +43,7 @@
 			
 			$.ajax({
 				type : "GET",
-				url : "/fastandfoodius/orderAddItem",
+				url : "${pageContext.request.contextPath}/orderAddItem",
 				data : dataString,
 			dataType : "text",
 			success : function(data) {
