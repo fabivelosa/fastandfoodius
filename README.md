@@ -1,4 +1,4 @@
-# fastandfoodius - Phase 1
+# fastandfoodius 
 The main aim of this project is to design a website for Fast and Foodiusrestaurant as part of an extension to provide 
 web-based access, easy transaction and enhanced quality to its customers.  The  website  will  be  designed  in  a  way  
 that  four different user roles  can  perform specific actions on the website:
