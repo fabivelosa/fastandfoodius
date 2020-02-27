@@ -20,9 +20,3 @@ mvn jetty:run
 
 Then open your browser and go to this url http://localhost:8080/fastandfoodius/
 
-# fastandfoodius - Phase 2
--> rest api 
--> spring
--> ?aws?
--> ?docker?
--> ?kubernetes?
